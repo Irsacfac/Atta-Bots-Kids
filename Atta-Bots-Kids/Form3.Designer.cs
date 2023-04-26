@@ -1,6 +1,6 @@
 ﻿namespace Atta_Bots_Kids
 {
-    partial class Form3
+    partial class Giro
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             // 
             this.texto.AutoSize = true;
             this.texto.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
-            this.texto.Location = new System.Drawing.Point(202, 18);
+            this.texto.Location = new System.Drawing.Point(111, 9);
             this.texto.Name = "texto";
             this.texto.Size = new System.Drawing.Size(74, 29);
             this.texto.TabIndex = 4;
@@ -72,7 +72,8 @@
             this.radialSlider1.EndAngle = 360D;
             this.radialSlider1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(151)))), ((int)(((byte)(55)))));
             this.radialSlider1.Location = new System.Drawing.Point(92, 54);
-            this.radialSlider1.MaximumValue = 360D;
+            this.radialSlider1.MaximumValue = 0D;
+            this.radialSlider1.MinimumValue = -360D;
             this.radialSlider1.Name = "radialSlider1";
             this.radialSlider1.RadialDirection = Syncfusion.Windows.Forms.Tools.RadialDirection.Clockwise;
             this.radialSlider1.Size = new System.Drawing.Size(287, 287);
@@ -82,7 +83,7 @@
             this.radialSlider1.Text = "radialSlider1";
             this.radialSlider1.Click += new System.EventHandler(this.radialSlider1_Click);
             // 
-            // Form3
+            // Giro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,7 +93,8 @@
             this.Controls.Add(this.texto);
             this.Controls.Add(this.BotonCancelar);
             this.Controls.Add(this.BotonOk);
-            this.Name = "Form3";
+            this.Name = "Giro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.ResumeLayout(false);
             this.PerformLayout();

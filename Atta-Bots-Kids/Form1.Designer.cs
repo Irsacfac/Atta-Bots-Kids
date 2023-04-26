@@ -72,7 +72,7 @@
             this.Herramientas.Dock = System.Windows.Forms.DockStyle.Top;
             this.Herramientas.Location = new System.Drawing.Point(0, 0);
             this.Herramientas.Name = "Herramientas";
-            this.Herramientas.Size = new System.Drawing.Size(800, 28);
+            this.Herramientas.Size = new System.Drawing.Size(800, 30);
             this.Herramientas.TabIndex = 0;
             // 
             // menuStrip1
@@ -84,7 +84,7 @@
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +94,7 @@
             this.limpiarHistorialToolStripMenuItem,
             this.generarDocumentoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // limpiarHistorialToolStripMenuItem
@@ -115,7 +115,7 @@
             this.versionToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 26);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // versionToolStripMenuItem
@@ -135,9 +135,9 @@
             this.Historial.Controls.Add(this.DisplayHistorial);
             this.Historial.Controls.Add(this.label1);
             this.Historial.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Historial.Location = new System.Drawing.Point(383, 28);
+            this.Historial.Location = new System.Drawing.Point(383, 30);
             this.Historial.Name = "Historial";
-            this.Historial.Size = new System.Drawing.Size(417, 665);
+            this.Historial.Size = new System.Drawing.Size(417, 663);
             this.Historial.TabIndex = 1;
             // 
             // DisplayHistorial
@@ -151,11 +151,11 @@
             // 
             // Limpiar
             // 
-            this.Limpiar.AutoSize = true;
             this.Limpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Limpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Limpiar.BackgroundImage")));
+            this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Limpiar.FlatAppearance.BorderSize = 0;
             this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Limpiar.Image = ((System.Drawing.Image)(resources.GetObject("Limpiar.Image")));
             this.Limpiar.Location = new System.Drawing.Point(285, 1);
             this.Limpiar.Name = "Limpiar";
             this.Limpiar.Size = new System.Drawing.Size(75, 82);
@@ -186,9 +186,9 @@
             this.Botones.Controls.Add(this.Atras);
             this.Botones.Controls.Add(this.Avanzar);
             this.Botones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Botones.Location = new System.Drawing.Point(0, 28);
+            this.Botones.Location = new System.Drawing.Point(0, 30);
             this.Botones.Name = "Botones";
-            this.Botones.Size = new System.Drawing.Size(383, 665);
+            this.Botones.Size = new System.Drawing.Size(383, 663);
             this.Botones.TabIndex = 2;
             // 
             // label_Acciones
@@ -205,9 +205,10 @@
             // Stop
             // 
             this.Stop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Stop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stop.BackgroundImage")));
+            this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Stop.FlatAppearance.BorderSize = 0;
             this.Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stop.Image = ((System.Drawing.Image)(resources.GetObject("Stop.Image")));
             this.Stop.Location = new System.Drawing.Point(199, 395);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(108, 108);
@@ -218,9 +219,10 @@
             // Play
             // 
             this.Play.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Play.BackgroundImage")));
+            this.Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Play.FlatAppearance.BorderSize = 0;
             this.Play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Play.Image = ((System.Drawing.Image)(resources.GetObject("Play.Image")));
             this.Play.Location = new System.Drawing.Point(50, 395);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(108, 108);
@@ -231,9 +233,10 @@
             // Obstaculo
             // 
             this.Obstaculo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Obstaculo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Obstaculo.BackgroundImage")));
+            this.Obstaculo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Obstaculo.FlatAppearance.BorderSize = 0;
             this.Obstaculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Obstaculo.Image = ((System.Drawing.Image)(resources.GetObject("Obstaculo.Image")));
             this.Obstaculo.Location = new System.Drawing.Point(199, 277);
             this.Obstaculo.Name = "Obstaculo";
             this.Obstaculo.Size = new System.Drawing.Size(108, 108);
@@ -244,9 +247,10 @@
             // Ciclo
             // 
             this.Ciclo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Ciclo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Ciclo.BackgroundImage")));
+            this.Ciclo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Ciclo.FlatAppearance.BorderSize = 0;
             this.Ciclo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Ciclo.Image = ((System.Drawing.Image)(resources.GetObject("Ciclo.Image")));
             this.Ciclo.Location = new System.Drawing.Point(50, 277);
             this.Ciclo.Name = "Ciclo";
             this.Ciclo.Size = new System.Drawing.Size(108, 108);
@@ -257,9 +261,10 @@
             // Derecha
             // 
             this.Derecha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Derecha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Derecha.BackgroundImage")));
+            this.Derecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Derecha.FlatAppearance.BorderSize = 0;
             this.Derecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Derecha.Image = ((System.Drawing.Image)(resources.GetObject("Derecha.Image")));
             this.Derecha.Location = new System.Drawing.Point(199, 154);
             this.Derecha.Name = "Derecha";
             this.Derecha.Size = new System.Drawing.Size(108, 109);
@@ -270,9 +275,10 @@
             // Izquierda
             // 
             this.Izquierda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Izquierda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Izquierda.BackgroundImage")));
+            this.Izquierda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Izquierda.FlatAppearance.BorderSize = 0;
             this.Izquierda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Izquierda.Image = ((System.Drawing.Image)(resources.GetObject("Izquierda.Image")));
             this.Izquierda.Location = new System.Drawing.Point(50, 154);
             this.Izquierda.Name = "Izquierda";
             this.Izquierda.Size = new System.Drawing.Size(108, 108);
@@ -283,9 +289,10 @@
             // Atras
             // 
             this.Atras.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Atras.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Atras.BackgroundImage")));
+            this.Atras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Atras.FlatAppearance.BorderSize = 0;
             this.Atras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Atras.Image = ((System.Drawing.Image)(resources.GetObject("Atras.Image")));
             this.Atras.Location = new System.Drawing.Point(199, 33);
             this.Atras.Name = "Atras";
             this.Atras.Size = new System.Drawing.Size(106, 108);
@@ -296,9 +303,10 @@
             // Avanzar
             // 
             this.Avanzar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Avanzar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Avanzar.BackgroundImage")));
+            this.Avanzar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Avanzar.FlatAppearance.BorderSize = 0;
             this.Avanzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Avanzar.Image = ((System.Drawing.Image)(resources.GetObject("Avanzar.Image")));
             this.Avanzar.Location = new System.Drawing.Point(50, 33);
             this.Avanzar.Name = "Avanzar";
             this.Avanzar.Size = new System.Drawing.Size(108, 109);
@@ -317,6 +325,7 @@
             this.Controls.Add(this.Herramientas);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atta-Bots Kids";
             this.Herramientas.ResumeLayout(false);
             this.Herramientas.PerformLayout();
@@ -325,7 +334,6 @@
             this.Historial.ResumeLayout(false);
             this.Historial.PerformLayout();
             this.DisplayHistorial.ResumeLayout(false);
-            this.DisplayHistorial.PerformLayout();
             this.Botones.ResumeLayout(false);
             this.Botones.PerformLayout();
             this.ResumeLayout(false);

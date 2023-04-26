@@ -16,6 +16,7 @@ namespace Atta_Bots_Kids
         //private Label trackbarValue;
         public Main()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9");
             InitializeComponent();
             //serialPort1.Open();
         }
@@ -53,12 +54,26 @@ namespace Atta_Bots_Kids
 
         private void Izquierda_Click(object sender, EventArgs e)
         {
-
+            using (Giro giro = new Giro("¿Cuanto quieres girar?", 0,-360))
+            {
+                if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    //value = movimiento.TrackbarValue;
+                    Console.WriteLine(giro.TrackbarValue);
+                }
+            }
         }
 
         private void Derecha_Click(object sender, EventArgs e)
         {
-
+            using (Giro giro = new Giro("¿Cuanto quieres girar?", 360, 0))
+            {
+                if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    //value = movimiento.TrackbarValue;
+                    Console.WriteLine(giro.TrackbarValue);
+                }
+            }
         }
 
         private void Ciclo_Click(object sender, EventArgs e)
@@ -120,14 +135,25 @@ namespace Atta_Bots_Kids
             buttonOk.DialogResult = DialogResult.OK;
             buttonCancel.DialogResult = DialogResult.Cancel;
 
-            // posicionamiento de los elementos
+            // posicionamiento y diseño de los elementos
             label.SetBounds(36, 36, 372, 13);
-            buttonOk.SetBounds(80, 160, 160, 60);
-            buttonCancel.SetBounds(270, 160, 160, 60);
+            label.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
+
+            buttonOk.SetBounds(40, 100, 130, 50);
+            buttonOk.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
+            buttonOk.Name = "BotonOk";
+            buttonOk.TabIndex = 2;
+            buttonOk.UseVisualStyleBackColor = true;
+
+            buttonCancel.SetBounds(190, 100, 130, 50);
+            buttonCancel.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
+            buttonCancel.Name = "BotonCancelar";
+            buttonCancel.TabIndex = 2;
+            buttonCancel.UseVisualStyleBackColor = true;
 
             // configuración del pop-up
             label.AutoSize = true;
-            form.ClientSize = new Size(500, 310);
+            form.ClientSize = new Size(361, 218);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MinimizeBox = false;
