@@ -33,6 +33,7 @@
             this.texto = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackbar_Label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // 
             this.texto.AutoSize = true;
             this.texto.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
-            this.texto.Location = new System.Drawing.Point(78, 36);
+            this.texto.Location = new System.Drawing.Point(66, 36);
             this.texto.Name = "texto";
             this.texto.Size = new System.Drawing.Size(74, 29);
             this.texto.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             this.trackBar1.AllowDrop = true;
             this.trackBar1.LargeChange = 50;
-            this.trackBar1.Location = new System.Drawing.Point(70, 90);
+            this.trackBar1.Location = new System.Drawing.Point(58, 90);
             this.trackBar1.Maximum = 999;
             this.trackBar1.Minimum = 50;
             this.trackBar1.Name = "trackBar1";
@@ -86,11 +87,21 @@
             // 
             this.trackbar_Label.AutoSize = true;
             this.trackbar_Label.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
-            this.trackbar_Label.Location = new System.Drawing.Point(385, 90);
+            this.trackbar_Label.Location = new System.Drawing.Point(373, 90);
             this.trackbar_Label.Name = "trackbar_Label";
             this.trackbar_Label.Size = new System.Drawing.Size(26, 29);
             this.trackbar_Label.TabIndex = 4;
             this.trackbar_Label.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
+            this.label1.Location = new System.Drawing.Point(418, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 29);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "mm";
             // 
             // Movimiento
             // 
@@ -98,6 +109,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(196)))), ((int)(((byte)(235)))));
             this.ClientSize = new System.Drawing.Size(482, 263);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.trackbar_Label);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.texto);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.Label texto;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label trackbar_Label;
+        private System.Windows.Forms.Label label1;
     }
 }

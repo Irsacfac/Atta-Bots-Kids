@@ -72,7 +72,7 @@
             this.Herramientas.Dock = System.Windows.Forms.DockStyle.Top;
             this.Herramientas.Location = new System.Drawing.Point(0, 0);
             this.Herramientas.Name = "Herramientas";
-            this.Herramientas.Size = new System.Drawing.Size(800, 30);
+            this.Herramientas.Size = new System.Drawing.Size(800, 28);
             this.Herramientas.TabIndex = 0;
             // 
             // menuStrip1
@@ -84,7 +84,7 @@
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +94,7 @@
             this.limpiarHistorialToolStripMenuItem,
             this.generarDocumentoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // limpiarHistorialToolStripMenuItem
@@ -115,7 +115,7 @@
             this.versionToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 26);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // versionToolStripMenuItem
@@ -135,9 +135,9 @@
             this.Historial.Controls.Add(this.DisplayHistorial);
             this.Historial.Controls.Add(this.label1);
             this.Historial.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Historial.Location = new System.Drawing.Point(383, 30);
+            this.Historial.Location = new System.Drawing.Point(383, 28);
             this.Historial.Name = "Historial";
-            this.Historial.Size = new System.Drawing.Size(417, 663);
+            this.Historial.Size = new System.Drawing.Size(417, 665);
             this.Historial.TabIndex = 1;
             // 
             // DisplayHistorial
@@ -156,9 +156,9 @@
             this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Limpiar.FlatAppearance.BorderSize = 0;
             this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Limpiar.Location = new System.Drawing.Point(285, 1);
+            this.Limpiar.Location = new System.Drawing.Point(304, 1);
             this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(75, 82);
+            this.Limpiar.Size = new System.Drawing.Size(56, 65);
             this.Limpiar.TabIndex = 0;
             this.Limpiar.UseVisualStyleBackColor = true;
             this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
@@ -186,9 +186,9 @@
             this.Botones.Controls.Add(this.Atras);
             this.Botones.Controls.Add(this.Avanzar);
             this.Botones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Botones.Location = new System.Drawing.Point(0, 30);
+            this.Botones.Location = new System.Drawing.Point(0, 28);
             this.Botones.Name = "Botones";
-            this.Botones.Size = new System.Drawing.Size(383, 663);
+            this.Botones.Size = new System.Drawing.Size(383, 665);
             this.Botones.TabIndex = 2;
             // 
             // label_Acciones
@@ -205,11 +205,11 @@
             // Stop
             // 
             this.Stop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Stop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stop.BackgroundImage")));
+            this.Stop.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Stop_Boton;
             this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Stop.FlatAppearance.BorderSize = 0;
             this.Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stop.Location = new System.Drawing.Point(199, 395);
+            this.Stop.Location = new System.Drawing.Point(199, 382);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(108, 108);
             this.Stop.TabIndex = 7;
@@ -219,11 +219,11 @@
             // Play
             // 
             this.Play.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Play.BackgroundImage")));
+            this.Play.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Play_Boton;
             this.Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Play.FlatAppearance.BorderSize = 0;
             this.Play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Play.Location = new System.Drawing.Point(50, 395);
+            this.Play.Location = new System.Drawing.Point(50, 382);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(108, 108);
             this.Play.TabIndex = 6;
@@ -233,11 +233,11 @@
             // Obstaculo
             // 
             this.Obstaculo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Obstaculo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Obstaculo.BackgroundImage")));
+            this.Obstaculo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Obstaculo_Boton;
             this.Obstaculo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Obstaculo.FlatAppearance.BorderSize = 0;
             this.Obstaculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Obstaculo.Location = new System.Drawing.Point(199, 277);
+            this.Obstaculo.Location = new System.Drawing.Point(199, 265);
             this.Obstaculo.Name = "Obstaculo";
             this.Obstaculo.Size = new System.Drawing.Size(108, 108);
             this.Obstaculo.TabIndex = 5;
@@ -247,11 +247,11 @@
             // Ciclo
             // 
             this.Ciclo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Ciclo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Ciclo.BackgroundImage")));
+            this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton;
             this.Ciclo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Ciclo.FlatAppearance.BorderSize = 0;
             this.Ciclo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Ciclo.Location = new System.Drawing.Point(50, 277);
+            this.Ciclo.Location = new System.Drawing.Point(50, 265);
             this.Ciclo.Name = "Ciclo";
             this.Ciclo.Size = new System.Drawing.Size(108, 108);
             this.Ciclo.TabIndex = 4;
@@ -261,11 +261,11 @@
             // Derecha
             // 
             this.Derecha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Derecha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Derecha.BackgroundImage")));
+            this.Derecha.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Derecha_Boton;
             this.Derecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Derecha.FlatAppearance.BorderSize = 0;
             this.Derecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Derecha.Location = new System.Drawing.Point(199, 154);
+            this.Derecha.Location = new System.Drawing.Point(199, 149);
             this.Derecha.Name = "Derecha";
             this.Derecha.Size = new System.Drawing.Size(108, 109);
             this.Derecha.TabIndex = 3;
@@ -275,11 +275,11 @@
             // Izquierda
             // 
             this.Izquierda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Izquierda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Izquierda.BackgroundImage")));
+            this.Izquierda.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Izquierda_Boton;
             this.Izquierda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Izquierda.FlatAppearance.BorderSize = 0;
             this.Izquierda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Izquierda.Location = new System.Drawing.Point(50, 154);
+            this.Izquierda.Location = new System.Drawing.Point(50, 149);
             this.Izquierda.Name = "Izquierda";
             this.Izquierda.Size = new System.Drawing.Size(108, 108);
             this.Izquierda.TabIndex = 2;
@@ -289,7 +289,7 @@
             // Atras
             // 
             this.Atras.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Atras.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Atras.BackgroundImage")));
+            this.Atras.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Atras_Boton;
             this.Atras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Atras.FlatAppearance.BorderSize = 0;
             this.Atras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -303,7 +303,7 @@
             // Avanzar
             // 
             this.Avanzar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Avanzar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Avanzar.BackgroundImage")));
+            this.Avanzar.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Avanzar_Boton;
             this.Avanzar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Avanzar.FlatAppearance.BorderSize = 0;
             this.Avanzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

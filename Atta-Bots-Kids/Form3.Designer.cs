@@ -72,8 +72,7 @@
             this.radialSlider1.EndAngle = 360D;
             this.radialSlider1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(151)))), ((int)(((byte)(55)))));
             this.radialSlider1.Location = new System.Drawing.Point(92, 54);
-            this.radialSlider1.MaximumValue = 0D;
-            this.radialSlider1.MinimumValue = -360D;
+            this.radialSlider1.MaximumValue = 360D;
             this.radialSlider1.Name = "radialSlider1";
             this.radialSlider1.RadialDirection = Syncfusion.Windows.Forms.Tools.RadialDirection.Clockwise;
             this.radialSlider1.Size = new System.Drawing.Size(287, 287);

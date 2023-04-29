@@ -107,6 +107,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -121,6 +122,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Atras_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Atta-Bot_Educativo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Avanzar_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Derecha_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Izquierda_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Obstaculo_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Obstaculo_Boton_Apagado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Repetir_Boton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Repetir_Boton_Apagado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stop_Boton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

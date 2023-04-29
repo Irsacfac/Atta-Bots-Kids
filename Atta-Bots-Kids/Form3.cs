@@ -13,14 +13,20 @@ namespace Atta_Bots_Kids
     public partial class Giro : Form
     {
         public string TrackbarValue { get; set; }
-        public Giro(string promptText, int max, int min)
+        public Giro(string promptText, bool sentidoHorario)
         {
             InitializeComponent();
             texto.Text = promptText; //texto del pop-up
             TrackbarValue = radialSlider1.Value.ToString();
             radialSlider1.ValueChanged += new Syncfusion.Windows.Forms.Tools.RadialSlider.ValueChangedEventHandler(radialSlider1_ValueChanged);
-            radialSlider1.MaximumValue = max;
-            radialSlider1.MinimumValue = min;
+            if (sentidoHorario)
+            {
+                radialSlider1.RadialDirection = Syncfusion.Windows.Forms.Tools.RadialDirection.Clockwise;
+            }
+            else
+            {
+                radialSlider1.RadialDirection = Syncfusion.Windows.Forms.Tools.RadialDirection.Counterclockwise;
+            }
         }
 
         private void radialSlider1_Click(object sender, EventArgs e)

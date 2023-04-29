@@ -14,11 +14,15 @@ namespace Atta_Bots_Kids
     public partial class Main : Form
     {
         //private Label trackbarValue;
+        private bool cicloActivo;
+        private bool detectarObstaculo;
         public Main()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9");
             InitializeComponent();
             //serialPort1.Open();
+            cicloActivo = true;
+            detectarObstaculo = true;
         }
 
         // El codigo aqui se activara cuando el usuario presione el boton "Avanzar"
@@ -54,7 +58,7 @@ namespace Atta_Bots_Kids
 
         private void Izquierda_Click(object sender, EventArgs e)
         {
-            using (Giro giro = new Giro("¿Cuanto quieres girar?", 0,-360))
+            using (Giro giro = new Giro("¿Cuanto quieres girar?", false))
             {
                 if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -66,7 +70,7 @@ namespace Atta_Bots_Kids
 
         private void Derecha_Click(object sender, EventArgs e)
         {
-            using (Giro giro = new Giro("¿Cuanto quieres girar?", 360, 0))
+            using (Giro giro = new Giro("¿Cuanto quieres girar?", true))
             {
                 if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -78,17 +82,45 @@ namespace Atta_Bots_Kids
 
         private void Ciclo_Click(object sender, EventArgs e)
         {
-            if (InputBoxConfirmacion("Confirmar", "¿Desea agregar un ciclo?") == DialogResult.OK)
+            if (cicloActivo)
             {
-                Console.WriteLine("OK");
+                if (InputBoxConfirmacion("Confirmar", "¿Desea agregar un ciclo?") == DialogResult.OK)
+                {
+                    Console.WriteLine("OK");
+                    this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton_Apagado;
+                    cicloActivo = !cicloActivo;
+                }
+            }
+            else
+            {
+                if (InputBoxConfirmacion("Confirmar", "¿Desea quitar el ciclo?") == DialogResult.OK)
+                {
+                    Console.WriteLine("OK");
+                    this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton;
+                    cicloActivo = !cicloActivo;
+                }
             }
         }
 
         private void Obstaculo_Click(object sender, EventArgs e)
         {
-            if (InputBoxConfirmacion("Confirmar", "¿Desea detectar obstaculos?") == DialogResult.OK)
+            if (detectarObstaculo)
             {
-                Console.WriteLine("OK");
+                if (InputBoxConfirmacion("Confirmar", "¿Desea detectar obstáculos?") == DialogResult.OK)
+                {
+                    Console.WriteLine("OK");
+                    this.Obstaculo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Obstaculo_Boton_Apagado;
+                    detectarObstaculo = !detectarObstaculo;
+                }
+            }
+            else
+            {
+                if (InputBoxConfirmacion("Confirmar", "¿Desea no detectar obstáculos?") == DialogResult.OK)
+                {
+                    Console.WriteLine("OK");
+                    this.Obstaculo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Obstaculo_Boton;
+                    detectarObstaculo = !detectarObstaculo;
+                }
             }
         }
 
@@ -110,7 +142,7 @@ namespace Atta_Bots_Kids
 
         private void Limpiar_Click(object sender, EventArgs e)
         {
-            if (InputBoxConfirmacion("Confirmar", "¿Desea detener el robot?") == DialogResult.OK)
+            if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
             {
                 Console.WriteLine("OK");
             }
