@@ -53,6 +53,7 @@
             this.Izquierda = new System.Windows.Forms.Button();
             this.Atras = new System.Windows.Forms.Button();
             this.Avanzar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.Herramientas.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Historial.SuspendLayout();
@@ -176,6 +177,7 @@
             // 
             // Botones
             // 
+            this.Botones.Controls.Add(this.label2);
             this.Botones.Controls.Add(this.label_Acciones);
             this.Botones.Controls.Add(this.Stop);
             this.Botones.Controls.Add(this.Play);
@@ -314,6 +316,14 @@
             this.Avanzar.UseVisualStyleBackColor = true;
             this.Avanzar.Click += new System.EventHandler(this.Avanzar_Click);
             // 
+            // label2
+            // 
+            this.label2.Image = global::Atta_Bots_Kids.Properties.Resources.Atta_Bot_Educativo;
+            this.label2.Location = new System.Drawing.Point(55, 501);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(248, 112);
+            this.label2.TabIndex = 8;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -366,6 +376,7 @@
         private System.Windows.Forms.Button Limpiar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Derecha;
+        private System.Windows.Forms.Label label2;
     }
 }
 
