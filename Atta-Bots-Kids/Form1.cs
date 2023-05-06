@@ -16,6 +16,7 @@ namespace Atta_Bots_Kids
         //private Label trackbarValue;
         private bool cicloActivo;
         private bool detectarObstaculo;
+        private List<Contenedor> instrucciones;
         public Main()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9");
@@ -23,6 +24,9 @@ namespace Atta_Bots_Kids
             //serialPort1.Open();
             cicloActivo = true;
             detectarObstaculo = true;
+            instrucciones = new List<Contenedor>();
+            //contenedores.Add(new Contenedor(DisplayHistorial,5,0, Globals.Funciones.Avanzar));
+            //contenedores.Add(new Contenedor(DisplayHistorial, 5, Globals.tamanioInstrucciones + Globals.espacioEntreInstrucciones, Globals.Funciones.Izquierda));
         }
 
         // El codigo aqui se activara cuando el usuario presione el boton "Avanzar"
@@ -33,14 +37,12 @@ namespace Atta_Bots_Kids
             {
                 if(movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Avanzar, movimiento.TrackbarValue, cicloActivo));
                     value = movimiento.TrackbarValue;
                     Console.WriteLine(value);
+                    Globals.agregarInstruccion();
                 }
             }
-            /*if (InputBoxMovimiento("Movimiento", "¿Cuanto quieres avanzar?", ref value, this) == DialogResult.OK)
-            {
-                Console.WriteLine(value);
-            }*/
         }
 
         private void Atras_Click(object sender, EventArgs e)
@@ -50,8 +52,10 @@ namespace Atta_Bots_Kids
             {
                 if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Retroceder, movimiento.TrackbarValue, cicloActivo));
                     value = movimiento.TrackbarValue;
                     Console.WriteLine(value);
+                    Globals.agregarInstruccion();
                 }
             }
         }
@@ -62,8 +66,9 @@ namespace Atta_Bots_Kids
             {
                 if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    //value = movimiento.TrackbarValue;
+                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Izquierda, giro.TrackbarValue, cicloActivo));
                     Console.WriteLine(giro.TrackbarValue);
+                    Globals.agregarInstruccion();
                 }
             }
         }
@@ -74,7 +79,9 @@ namespace Atta_Bots_Kids
             {
                 if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Derecha, giro.TrackbarValue, cicloActivo));
                     //value = movimiento.TrackbarValue;
+                    Globals.agregarInstruccion();
                     Console.WriteLine(giro.TrackbarValue);
                 }
             }

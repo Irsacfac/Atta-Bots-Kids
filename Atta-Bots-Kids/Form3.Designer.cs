@@ -94,7 +94,7 @@
             this.Controls.Add(this.BotonOk);
             this.Name = "Giro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form3";
+            this.Text = "Giro";
             this.ResumeLayout(false);
             this.PerformLayout();
 

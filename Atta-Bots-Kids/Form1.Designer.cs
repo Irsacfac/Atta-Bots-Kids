@@ -44,6 +44,7 @@
             this.Limpiar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Botones = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label_Acciones = new System.Windows.Forms.Label();
             this.Stop = new System.Windows.Forms.Button();
             this.Play = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.Izquierda = new System.Windows.Forms.Button();
             this.Atras = new System.Windows.Forms.Button();
             this.Avanzar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.Herramientas.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Historial.SuspendLayout();
@@ -143,6 +143,7 @@
             // 
             // DisplayHistorial
             // 
+            this.DisplayHistorial.AutoScroll = true;
             this.DisplayHistorial.BackColor = System.Drawing.Color.White;
             this.DisplayHistorial.Controls.Add(this.Limpiar);
             this.DisplayHistorial.Location = new System.Drawing.Point(30, 29);
@@ -157,7 +158,7 @@
             this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Limpiar.FlatAppearance.BorderSize = 0;
             this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Limpiar.Location = new System.Drawing.Point(304, 1);
+            this.Limpiar.Location = new System.Drawing.Point(280, 5);
             this.Limpiar.Name = "Limpiar";
             this.Limpiar.Size = new System.Drawing.Size(56, 65);
             this.Limpiar.TabIndex = 0;
@@ -192,6 +193,14 @@
             this.Botones.Name = "Botones";
             this.Botones.Size = new System.Drawing.Size(383, 665);
             this.Botones.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Image = global::Atta_Bots_Kids.Properties.Resources.Atta_Bot_Educativo;
+            this.label2.Location = new System.Drawing.Point(55, 501);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(248, 112);
+            this.label2.TabIndex = 8;
             // 
             // label_Acciones
             // 
@@ -315,14 +324,6 @@
             this.Avanzar.TabIndex = 0;
             this.Avanzar.UseVisualStyleBackColor = true;
             this.Avanzar.Click += new System.EventHandler(this.Avanzar_Click);
-            // 
-            // label2
-            // 
-            this.label2.Image = global::Atta_Bots_Kids.Properties.Resources.Atta_Bot_Educativo;
-            this.label2.Location = new System.Drawing.Point(55, 501);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 112);
-            this.label2.TabIndex = 8;
             // 
             // Main
             // 
