@@ -19,12 +19,30 @@ public static class Globals
     }
     public static string[] codigos = { "del", "atr", "izq", "der", "obs", "rep","stp","ply" };
     public static int tamanioInstrucciones = 60;
-    public static int posicionInstrucciones = 5;
+    private static int posicionInstrucciones = 5;
+    public static int PosicionInstrucciones
+    {
+        get
+        {
+            return posicionInstrucciones;
+        }
+        set
+        {
+            posicionInstrucciones = value;
+        }
+    }
     public static int espacioEntreInstrucciones = 5;
     private static int cantInstrucciones = 0;
-    public static int getCantInstrucciones()
+    public static int CantInstrucciones
     {
-        return cantInstrucciones;
+        get
+        {
+            return cantInstrucciones;
+        }
+        set 
+        { 
+            cantInstrucciones = value;
+        }
     }
     public static void agregarInstruccion()
     {

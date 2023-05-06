@@ -96,6 +96,7 @@ namespace Atta_Bots_Kids
                     Console.WriteLine("OK");
                     this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton_Apagado;
                     cicloActivo = !cicloActivo;
+                    Globals.PosicionInstrucciones = 55;
                 }
             }
             else
@@ -105,6 +106,7 @@ namespace Atta_Bots_Kids
                     Console.WriteLine("OK");
                     this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton;
                     cicloActivo = !cicloActivo;
+                    Globals.PosicionInstrucciones = 5;
                 }
             }
         }

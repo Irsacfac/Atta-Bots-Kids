@@ -52,8 +52,8 @@ namespace Atta_Bots_Kids
 
         private void InitializeComponent(int ajuste)
         {
-            int ejeX = posicionInstrucciones + ajuste;
-            int ejeY = tamanioInstrucciones * getCantInstrucciones() + espacioEntreInstrucciones * getCantInstrucciones();
+            int ejeX = PosicionInstrucciones;
+            int ejeY = tamanioInstrucciones * CantInstrucciones + espacioEntreInstrucciones * CantInstrucciones;
             boton = new Button();
             imagenInstruccion = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imagenInstruccion)).BeginInit();
@@ -95,6 +95,22 @@ namespace Atta_Bots_Kids
             _ = instrucciones.Remove(this);
             Console.WriteLine("borrado");
             eliminarInstruccion();
+        }
+        public void Clear()
+        {
+            historial.Controls.Remove(this.boton);
+            historial.Controls.Remove(this.imagenInstruccion);
+            boton.Dispose();
+            imagenInstruccion.Dispose();
+        }
+        public void actualizarPosicion(int ejeX, int ejeY)
+        {
+            this.imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY);
+            this.boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY);
+        }
+        public override string ToString()
+        {
+            return codigo + "-" + valor;
         }
     }
 }
