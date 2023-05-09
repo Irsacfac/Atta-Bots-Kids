@@ -18,6 +18,13 @@ namespace Atta_Bots_Kids
         private string valor;
         private List<Contenedor> instrucciones;
 
+        public Contenedor(Funciones funcion, string valor)
+        {
+            this.valor = valor;
+            codigo = codigos[(int)funcion];
+            boton = null;
+            imagenInstruccion = null;
+        }
         public Contenedor(Panel historial, List<Contenedor> instrucciones, Funciones funcion, string valor, bool ciclo)
         {
             this.instrucciones = instrucciones;
@@ -85,23 +92,40 @@ namespace Atta_Bots_Kids
             this.boton.UseVisualStyleBackColor = false;
             this.boton.Click += new System.EventHandler(this.Boton_Click);
         }
-
+        //elimina la instruccion deseada, no se pregunta por confirmación
         private void Boton_Click(object sender, EventArgs e)
         {
             historial.Controls.Remove(this.boton);
             historial.Controls.Remove(this.imagenInstruccion);
             boton.Dispose();
             imagenInstruccion.Dispose();
-            _ = instrucciones.Remove(this);
-            Console.WriteLine("borrado");
+            if (instrucciones.Last() == this)
+            {
+                instrucciones.Remove(this);
+            }
+            else
+            {
+                int pos = instrucciones.IndexOf(this);
+                int ejeY;
+                instrucciones.Remove(this);
+                for (int i = pos; i < instrucciones.Count; i++)
+                {
+                    ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
+                    instrucciones[i].actualizarPosicion(PosicionInstrucciones, ejeY);
+                }
+                Console.WriteLine("borrado");
+            }
             eliminarInstruccion();
         }
         public void Clear()
         {
-            historial.Controls.Remove(this.boton);
-            historial.Controls.Remove(this.imagenInstruccion);
-            boton.Dispose();
-            imagenInstruccion.Dispose();
+            //historial.Controls.Remove(this.boton);
+            //historial.Controls.Remove(this.imagenInstruccion);
+            if (boton != null)
+            {
+                boton.Dispose();
+                imagenInstruccion.Dispose();
+            }
         }
         public void actualizarPosicion(int ejeX, int ejeY)
         {

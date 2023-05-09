@@ -17,6 +17,7 @@ namespace Atta_Bots_Kids
         private bool cicloActivo;
         private bool detectarObstaculo;
         private List<Contenedor> instrucciones;
+        private Contenedor ciclo;
         public Main()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9");
@@ -97,6 +98,8 @@ namespace Atta_Bots_Kids
                     this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton_Apagado;
                     cicloActivo = !cicloActivo;
                     Globals.PosicionInstrucciones = 55;
+                    ciclo = new Contenedor(Globals.Funciones.Ciclo, "111");
+                    instrucciones.Add(ciclo);
                 }
             }
             else
@@ -107,6 +110,7 @@ namespace Atta_Bots_Kids
                     this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton;
                     cicloActivo = !cicloActivo;
                     Globals.PosicionInstrucciones = 5;
+                    ajustarInstrucciones();
                 }
             }
         }
@@ -154,9 +158,41 @@ namespace Atta_Bots_Kids
             if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
             {
                 Console.WriteLine("OK");
+                DisplayHistorial.Controls.Clear();
+                DisplayHistorial.Controls.Add(Limpiar);
+                foreach (Contenedor instruccion in instrucciones)
+                {
+                    instruccion.Clear();
+                }
+                instrucciones.Clear();
+                Globals.CantInstrucciones = 0;
+                cicloActivo = true;
+                detectarObstaculo = true;
+                Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton;
+                Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton;
+                Globals.PosicionInstrucciones = 5;
             }
         }
-
+        //se llama cuando se desactiva el ciclo
+        private void ajustarInstrucciones()
+        {
+            if(instrucciones.Last() == ciclo)
+            {
+                instrucciones.Remove(ciclo);
+            }
+            else
+            {
+                int posCiclo = instrucciones.IndexOf(ciclo);
+                instrucciones.Remove(ciclo);
+                ciclo = null;
+                int ejeY;
+                for (int i = posCiclo; i < instrucciones.Count; i++)
+                {
+                    ejeY = Globals.tamanioInstrucciones * i + Globals.espacioEntreInstrucciones * i;
+                    instrucciones[i].actualizarPosicion(Globals.PosicionInstrucciones, ejeY);
+                }
+            }
+        }
         // Pop-up de confirmación
         public static DialogResult InputBoxConfirmacion(string title, string promptText)
         {
