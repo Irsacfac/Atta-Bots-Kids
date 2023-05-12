@@ -28,7 +28,7 @@ namespace Atta_Bots_Kids
         public Contenedor(Panel historial, List<Contenedor> instrucciones, Funciones funcion, string valor, bool ciclo)
         {
             this.instrucciones = instrucciones;
-            //this.historial = historial; 
+            this.historial = historial; 
             this.valor = valor;
             int ajuste = 0;
             if (!ciclo)
@@ -36,7 +36,6 @@ namespace Atta_Bots_Kids
                 ajuste = 50;
             }
             InitializeComponent(ajuste);
-            //this.imagenInstruccion.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Izquierda_Boton;
             codigo = codigos[(int)funcion];
             switch (funcion)
             {
@@ -55,73 +54,6 @@ namespace Atta_Bots_Kids
                 default: //play
                     break;
             }
-        }
-        public Contenedor(TableLayoutPanel historial, List<Contenedor> instrucciones, Funciones funcion, string valor, bool ciclo, int i)
-        {
-            this.instrucciones = instrucciones;
-            this.historial = historial;
-            this.valor = valor;
-            int ajuste = 0;
-            if (!ciclo)
-            {
-                ajuste = 50;
-            }
-            InitializeComponent(historial, ajuste);
-            //this.imagenInstruccion.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Izquierda_Boton;
-            codigo = codigos[(int)funcion];
-            switch (funcion)
-            {
-                case Funciones.Avanzar:
-                    imagenInstruccion.BackgroundImage = Properties.Resources.Avanzar_Boton;
-                    break;
-                case Funciones.Retroceder:
-                    imagenInstruccion.BackgroundImage = Properties.Resources.Atras_Boton;
-                    break;
-                case Funciones.Izquierda:
-                    imagenInstruccion.BackgroundImage = Properties.Resources.Izquierda_Boton;
-                    break;
-                case Funciones.Derecha:
-                    imagenInstruccion.BackgroundImage = Properties.Resources.Derecha_Boton;
-                    break;
-                default: //play
-                    break;
-            }
-        }
-
-        private void InitializeComponent(TableLayoutPanel historial1, int ajuste)
-        {
-            int ejeX = PosicionInstrucciones;
-            int ejeY = tamanioInstrucciones * CantInstrucciones + espacioEntreInstrucciones * CantInstrucciones;
-            boton = new Button();
-            imagenInstruccion = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imagenInstruccion)).BeginInit();
-            //this.tableLayoutPanel1.Controls.Add(this.Limpiar, 2, 0);
-            historial1.Controls.Add(this.imagenInstruccion,0,0);
-            historial1.Controls.Add(this.boton,0,0);
-            // 
-            // imagenInstruccion
-            // 
-            this.imagenInstruccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //this.imagenInstruccion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY);
-            this.imagenInstruccion.Name = "imagenInstruccion";
-            this.imagenInstruccion.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
-            this.imagenInstruccion.TabIndex = 1;
-            this.imagenInstruccion.TabStop = false;
-            // 
-            // boton
-            // 
-            this.boton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            //this.boton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.boton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.boton.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F, System.Drawing.FontStyle.Bold);
-            this.boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY);
-            this.boton.Name = "boton";
-            this.boton.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
-            this.boton.TabIndex = 0;
-            this.boton.Text = "X";
-            this.boton.UseVisualStyleBackColor = false;
-            this.boton.Click += new System.EventHandler(this.Boton_Click);
         }
 
         private void InitializeComponent(int ajuste)
@@ -130,40 +62,38 @@ namespace Atta_Bots_Kids
             int ejeY = tamanioInstrucciones * CantInstrucciones + espacioEntreInstrucciones * CantInstrucciones;
             boton = new Button();
             imagenInstruccion = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imagenInstruccion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(imagenInstruccion)).BeginInit();
 
-            historial.Controls.Add(this.imagenInstruccion);
-            historial.Controls.Add(this.boton);
+            historial.Controls.Add(imagenInstruccion);
+            historial.Controls.Add(boton);
             // 
             // imagenInstruccion
             // 
-            this.imagenInstruccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //this.imagenInstruccion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY);
-            this.imagenInstruccion.Name = "imagenInstruccion";
-            this.imagenInstruccion.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
-            this.imagenInstruccion.TabIndex = 1;
-            this.imagenInstruccion.TabStop = false;
+            imagenInstruccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY+historial.AutoScrollPosition.Y);
+            imagenInstruccion.Name = "imagenInstruccion";
+            imagenInstruccion.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
+            imagenInstruccion.TabIndex = 1;
+            imagenInstruccion.TabStop = false;
             // 
             // boton
             // 
-            this.boton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            //this.boton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.boton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.boton.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F, System.Drawing.FontStyle.Bold);
-            this.boton.Location = new System.Drawing.Point(ejeX+tamanioInstrucciones, ejeY);
-            this.boton.Name = "boton";
-            this.boton.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
-            this.boton.TabIndex = 0;
-            this.boton.Text = "X";
-            this.boton.UseVisualStyleBackColor = false;
-            this.boton.Click += new System.EventHandler(this.Boton_Click);
+            boton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            boton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            boton.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F, System.Drawing.FontStyle.Bold);
+            boton.Location = new System.Drawing.Point(ejeX+tamanioInstrucciones, ejeY + historial.AutoScrollPosition.Y);
+            boton.Name = "boton";
+            boton.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
+            boton.TabIndex = 0;
+            boton.Text = "X";
+            boton.UseVisualStyleBackColor = false;
+            boton.Click += new System.EventHandler(Boton_Click);
         }
         //elimina la instruccion deseada, no se pregunta por confirmación
         private void Boton_Click(object sender, EventArgs e)
         {
-            historial.Controls.Remove(this.boton);
-            historial.Controls.Remove(this.imagenInstruccion);
+            historial.Controls.Remove(boton);
+            historial.Controls.Remove(imagenInstruccion);
             boton.Dispose();
             imagenInstruccion.Dispose();
             if (instrucciones.Last() == this)
@@ -208,8 +138,8 @@ namespace Atta_Bots_Kids
         }
         public void actualizarPosicion(int ejeX, int ejeY)
         {
-            this.imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY);
-            this.boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY);
+            imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY + historial.AutoScrollPosition.Y);
+            boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY + historial.AutoScrollPosition.Y);
             
         }
         public void ajustarEjeX(int ajuste)

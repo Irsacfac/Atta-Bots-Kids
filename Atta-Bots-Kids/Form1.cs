@@ -27,9 +27,6 @@ namespace Atta_Bots_Kids
             detectarObstaculo = true;
             instrucciones = new List<Contenedor>();
             Globals.posicionCiclo = -1;
-            this.tableLayoutPanel1.RowCount = Globals.CantInstrucciones;
-            instrucciones.Add(new Contenedor(tableLayoutPanel1, instrucciones, Globals.Funciones.Retroceder, "100", cicloActivo,0));
-            instrucciones.Add(new Contenedor(tableLayoutPanel1, instrucciones, Globals.Funciones.Retroceder, "50", cicloActivo,0));
             //contenedores.Add(new Contenedor(DisplayHistorial,5,0, Globals.Funciones.Avanzar));
             //contenedores.Add(new Contenedor(DisplayHistorial, 5, Globals.tamanioInstrucciones + Globals.espacioEntreInstrucciones, Globals.Funciones.Izquierda));
         }

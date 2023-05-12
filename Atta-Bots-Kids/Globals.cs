@@ -19,7 +19,7 @@ public static class Globals
         Play
     }
     public static string[] codigos = { "del", "atr", "izq", "der", "obs", "rep","stp","ply" };
-    public static int tamanioInstrucciones = 40;
+    public static int tamanioInstrucciones = 60;
     private static int posicionInstrucciones = 3;
     public static int PosicionInstrucciones
     {

@@ -41,7 +41,6 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Historial = new System.Windows.Forms.Panel();
             this.DisplayHistorial = new System.Windows.Forms.Panel();
-            this.Limpiar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Botones = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,12 +53,12 @@
             this.Izquierda = new System.Windows.Forms.Button();
             this.Atras = new System.Windows.Forms.Button();
             this.Avanzar = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Limpiar = new System.Windows.Forms.Button();
             this.Herramientas.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Historial.SuspendLayout();
+            this.DisplayHistorial.SuspendLayout();
             this.Botones.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -134,7 +133,6 @@
             // 
             // Historial
             // 
-            this.Historial.Controls.Add(this.tableLayoutPanel1);
             this.Historial.Controls.Add(this.DisplayHistorial);
             this.Historial.Controls.Add(this.label1);
             this.Historial.Dock = System.Windows.Forms.DockStyle.Right;
@@ -147,24 +145,11 @@
             // 
             this.DisplayHistorial.AutoScroll = true;
             this.DisplayHistorial.BackColor = System.Drawing.Color.White;
+            this.DisplayHistorial.Controls.Add(this.Limpiar);
             this.DisplayHistorial.Location = new System.Drawing.Point(30, 29);
             this.DisplayHistorial.Name = "DisplayHistorial";
             this.DisplayHistorial.Size = new System.Drawing.Size(361, 584);
             this.DisplayHistorial.TabIndex = 1;
-            // 
-            // Limpiar
-            // 
-            this.Limpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Limpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Limpiar.BackgroundImage")));
-            this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Limpiar.FlatAppearance.BorderSize = 0;
-            this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Limpiar.Location = new System.Drawing.Point(265, 3);
-            this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(56, 65);
-            this.Limpiar.TabIndex = 0;
-            this.Limpiar.UseVisualStyleBackColor = true;
-            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
             // 
             // label1
             // 
@@ -326,22 +311,19 @@
             this.Avanzar.UseVisualStyleBackColor = true;
             this.Avanzar.Click += new System.EventHandler(this.Avanzar_Click);
             // 
-            // tableLayoutPanel1
+            // Limpiar
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.Controls.Add(this.Limpiar, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 29);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(361, 584);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.Limpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Limpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Limpiar.BackgroundImage")));
+            this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Limpiar.FlatAppearance.BorderSize = 0;
+            this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Limpiar.Location = new System.Drawing.Point(275, 4);
+            this.Limpiar.Name = "Limpiar";
+            this.Limpiar.Size = new System.Drawing.Size(56, 65);
+            this.Limpiar.TabIndex = 0;
+            this.Limpiar.UseVisualStyleBackColor = true;
+            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
             // 
             // Main
             // 
@@ -362,9 +344,9 @@
             this.menuStrip1.PerformLayout();
             this.Historial.ResumeLayout(false);
             this.Historial.PerformLayout();
+            this.DisplayHistorial.ResumeLayout(false);
             this.Botones.ResumeLayout(false);
             this.Botones.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,11 +374,10 @@
         private System.Windows.Forms.Button Avanzar;
         private System.Windows.Forms.Label label_Acciones;
         private System.Windows.Forms.Panel DisplayHistorial;
-        private System.Windows.Forms.Button Limpiar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Derecha;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button Limpiar;
     }
 }
 
