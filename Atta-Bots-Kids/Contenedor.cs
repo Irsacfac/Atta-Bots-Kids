@@ -28,7 +28,7 @@ namespace Atta_Bots_Kids
         public Contenedor(Panel historial, List<Contenedor> instrucciones, Funciones funcion, string valor, bool ciclo)
         {
             this.instrucciones = instrucciones;
-            this.historial = historial; 
+            //this.historial = historial; 
             this.valor = valor;
             int ajuste = 0;
             if (!ciclo)
@@ -55,6 +55,73 @@ namespace Atta_Bots_Kids
                 default: //play
                     break;
             }
+        }
+        public Contenedor(TableLayoutPanel historial, List<Contenedor> instrucciones, Funciones funcion, string valor, bool ciclo, int i)
+        {
+            this.instrucciones = instrucciones;
+            this.historial = historial;
+            this.valor = valor;
+            int ajuste = 0;
+            if (!ciclo)
+            {
+                ajuste = 50;
+            }
+            InitializeComponent(historial, ajuste);
+            //this.imagenInstruccion.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Izquierda_Boton;
+            codigo = codigos[(int)funcion];
+            switch (funcion)
+            {
+                case Funciones.Avanzar:
+                    imagenInstruccion.BackgroundImage = Properties.Resources.Avanzar_Boton;
+                    break;
+                case Funciones.Retroceder:
+                    imagenInstruccion.BackgroundImage = Properties.Resources.Atras_Boton;
+                    break;
+                case Funciones.Izquierda:
+                    imagenInstruccion.BackgroundImage = Properties.Resources.Izquierda_Boton;
+                    break;
+                case Funciones.Derecha:
+                    imagenInstruccion.BackgroundImage = Properties.Resources.Derecha_Boton;
+                    break;
+                default: //play
+                    break;
+            }
+        }
+
+        private void InitializeComponent(TableLayoutPanel historial1, int ajuste)
+        {
+            int ejeX = PosicionInstrucciones;
+            int ejeY = tamanioInstrucciones * CantInstrucciones + espacioEntreInstrucciones * CantInstrucciones;
+            boton = new Button();
+            imagenInstruccion = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenInstruccion)).BeginInit();
+            //this.tableLayoutPanel1.Controls.Add(this.Limpiar, 2, 0);
+            historial1.Controls.Add(this.imagenInstruccion,0,0);
+            historial1.Controls.Add(this.boton,0,0);
+            // 
+            // imagenInstruccion
+            // 
+            this.imagenInstruccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            //this.imagenInstruccion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY);
+            this.imagenInstruccion.Name = "imagenInstruccion";
+            this.imagenInstruccion.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
+            this.imagenInstruccion.TabIndex = 1;
+            this.imagenInstruccion.TabStop = false;
+            // 
+            // boton
+            // 
+            this.boton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            //this.boton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.boton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.boton.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F, System.Drawing.FontStyle.Bold);
+            this.boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY);
+            this.boton.Name = "boton";
+            this.boton.Size = new System.Drawing.Size(tamanioInstrucciones, tamanioInstrucciones);
+            this.boton.TabIndex = 0;
+            this.boton.Text = "X";
+            this.boton.UseVisualStyleBackColor = false;
+            this.boton.Click += new System.EventHandler(this.Boton_Click);
         }
 
         private void InitializeComponent(int ajuste)
@@ -110,8 +177,20 @@ namespace Atta_Bots_Kids
                 instrucciones.Remove(this);
                 for (int i = pos; i < instrucciones.Count; i++)
                 {
-                    ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
-                    instrucciones[i].actualizarPosicion(PosicionInstrucciones, ejeY);
+                    if(i != posicionCiclo)
+                    {
+                        ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
+                        instrucciones[i].actualizarPosicion(PosicionInstrucciones, ejeY);
+                    };
+                    /*if(i <= posicionCiclo && posicionCiclo != -1)
+                    {
+                        ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
+                        instrucciones[i].actualizarPosicion(5, ejeY);
+                    }else if(i >= posicionCiclo && i <= posicionCiclo)
+                    {
+                        ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
+                        instrucciones[i].actualizarPosicion(55, ejeY);
+                    }*/
                 }
                 Console.WriteLine("borrado");
             }
@@ -131,6 +210,12 @@ namespace Atta_Bots_Kids
         {
             this.imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY);
             this.boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY);
+            
+        }
+        public void ajustarEjeX(int ajuste)
+        {
+            imagenInstruccion.Left += ajuste;
+            boton.Left += ajuste;
         }
         public override string ToString()
         {

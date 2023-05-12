@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Atta_Bots_Kids;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,8 @@ public static class Globals
         Play
     }
     public static string[] codigos = { "del", "atr", "izq", "der", "obs", "rep","stp","ply" };
-    public static int tamanioInstrucciones = 60;
-    private static int posicionInstrucciones = 5;
+    public static int tamanioInstrucciones = 40;
+    private static int posicionInstrucciones = 3;
     public static int PosicionInstrucciones
     {
         get
@@ -52,4 +53,17 @@ public static class Globals
     {
         cantInstrucciones--;
     }
+    private static int posCiclo;
+    public static int posicionCiclo
+    {
+        get
+        {
+            return posCiclo;
+        }
+        set
+        {
+            posCiclo = value;
+        }
+    }
+    public static int limiteInstrucciones = 20;
 }

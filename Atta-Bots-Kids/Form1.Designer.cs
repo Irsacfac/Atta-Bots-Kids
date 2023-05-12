@@ -54,11 +54,12 @@
             this.Izquierda = new System.Windows.Forms.Button();
             this.Atras = new System.Windows.Forms.Button();
             this.Avanzar = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Herramientas.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Historial.SuspendLayout();
-            this.DisplayHistorial.SuspendLayout();
             this.Botones.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -133,6 +134,7 @@
             // 
             // Historial
             // 
+            this.Historial.Controls.Add(this.tableLayoutPanel1);
             this.Historial.Controls.Add(this.DisplayHistorial);
             this.Historial.Controls.Add(this.label1);
             this.Historial.Dock = System.Windows.Forms.DockStyle.Right;
@@ -145,7 +147,6 @@
             // 
             this.DisplayHistorial.AutoScroll = true;
             this.DisplayHistorial.BackColor = System.Drawing.Color.White;
-            this.DisplayHistorial.Controls.Add(this.Limpiar);
             this.DisplayHistorial.Location = new System.Drawing.Point(30, 29);
             this.DisplayHistorial.Name = "DisplayHistorial";
             this.DisplayHistorial.Size = new System.Drawing.Size(361, 584);
@@ -158,7 +159,7 @@
             this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Limpiar.FlatAppearance.BorderSize = 0;
             this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Limpiar.Location = new System.Drawing.Point(280, 5);
+            this.Limpiar.Location = new System.Drawing.Point(265, 3);
             this.Limpiar.Name = "Limpiar";
             this.Limpiar.Size = new System.Drawing.Size(56, 65);
             this.Limpiar.TabIndex = 0;
@@ -325,6 +326,23 @@
             this.Avanzar.UseVisualStyleBackColor = true;
             this.Avanzar.Click += new System.EventHandler(this.Avanzar_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.Controls.Add(this.Limpiar, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 29);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(361, 584);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,9 +362,9 @@
             this.menuStrip1.PerformLayout();
             this.Historial.ResumeLayout(false);
             this.Historial.PerformLayout();
-            this.DisplayHistorial.ResumeLayout(false);
             this.Botones.ResumeLayout(false);
             this.Botones.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,6 +396,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Derecha;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

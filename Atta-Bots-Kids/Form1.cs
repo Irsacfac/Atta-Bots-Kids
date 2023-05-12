@@ -26,6 +26,10 @@ namespace Atta_Bots_Kids
             cicloActivo = true;
             detectarObstaculo = true;
             instrucciones = new List<Contenedor>();
+            Globals.posicionCiclo = -1;
+            this.tableLayoutPanel1.RowCount = Globals.CantInstrucciones;
+            instrucciones.Add(new Contenedor(tableLayoutPanel1, instrucciones, Globals.Funciones.Retroceder, "100", cicloActivo,0));
+            instrucciones.Add(new Contenedor(tableLayoutPanel1, instrucciones, Globals.Funciones.Retroceder, "50", cicloActivo,0));
             //contenedores.Add(new Contenedor(DisplayHistorial,5,0, Globals.Funciones.Avanzar));
             //contenedores.Add(new Contenedor(DisplayHistorial, 5, Globals.tamanioInstrucciones + Globals.espacioEntreInstrucciones, Globals.Funciones.Izquierda));
         }
@@ -33,57 +37,97 @@ namespace Atta_Bots_Kids
         // El codigo aqui se activara cuando el usuario presione el boton "Avanzar"
         private void Avanzar_Click(object sender, EventArgs e)
         {
-            string value = "";
-            using (Movimiento movimiento = new Movimiento("Movimiento", "¿Cuanto quieres avanzar?"))
+            if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
-                if(movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                string value = "";
+                using (Movimiento movimiento = new Movimiento("Movimiento", "¿Cuanto quieres avanzar?"))
                 {
-                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Avanzar, movimiento.TrackbarValue, cicloActivo));
-                    value = movimiento.TrackbarValue;
-                    Console.WriteLine(value);
-                    Globals.agregarInstruccion();
+                    if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Avanzar, movimiento.TrackbarValue, cicloActivo));
+                        value = movimiento.TrackbarValue;
+                        Console.WriteLine(value);
+                        Globals.agregarInstruccion();
+                    }
+                }
+            }
+            else
+            {
+                if (InputBoxLimiteAlcanzado() == DialogResult.OK)
+                {
+                    return;
                 }
             }
         }
 
         private void Atras_Click(object sender, EventArgs e)
         {
-            string value = "";
-            using (Movimiento movimiento = new Movimiento("Movimiento", "¿Cuanto quieres retroceder?"))
+            if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
-                if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                string value = "";
+                using (Movimiento movimiento = new Movimiento("Movimiento", "¿Cuanto quieres retroceder?"))
                 {
-                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Retroceder, movimiento.TrackbarValue, cicloActivo));
-                    value = movimiento.TrackbarValue;
-                    Console.WriteLine(value);
-                    Globals.agregarInstruccion();
+                    if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Retroceder, movimiento.TrackbarValue, cicloActivo));
+                        value = movimiento.TrackbarValue;
+                        Console.WriteLine(value);
+                        Globals.agregarInstruccion();
+                    }
+                }
+            }
+            else
+            {
+                if (InputBoxLimiteAlcanzado() == DialogResult.OK)
+                {
+                    return;
                 }
             }
         }
 
         private void Izquierda_Click(object sender, EventArgs e)
         {
-            using (Giro giro = new Giro("¿Cuanto quieres girar?", false))
+            if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
-                if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using (Giro giro = new Giro("¿Cuanto quieres girar?", false))
                 {
-                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Izquierda, giro.TrackbarValue, cicloActivo));
-                    Console.WriteLine(giro.TrackbarValue);
-                    Globals.agregarInstruccion();
+                    if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Izquierda, giro.TrackbarValue, cicloActivo));
+                        Console.WriteLine(giro.TrackbarValue);
+                        Globals.agregarInstruccion();
+                    }
+                }
+            }
+            else
+            {
+                if (InputBoxLimiteAlcanzado() == DialogResult.OK)
+                {
+                    return;
                 }
             }
         }
 
         private void Derecha_Click(object sender, EventArgs e)
         {
-            using (Giro giro = new Giro("¿Cuanto quieres girar?", true))
+            if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
-                if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using (Giro giro = new Giro("¿Cuanto quieres girar?", true))
                 {
-                    instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Derecha, giro.TrackbarValue, cicloActivo));
-                    //value = movimiento.TrackbarValue;
-                    Globals.agregarInstruccion();
-                    Console.WriteLine(giro.TrackbarValue);
+                    if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Derecha, giro.TrackbarValue, cicloActivo));
+                        //value = movimiento.TrackbarValue;
+                        Globals.agregarInstruccion();
+                        Console.WriteLine(giro.TrackbarValue);
+                    }
+                }
+            }
+            else
+            {
+                if (InputBoxLimiteAlcanzado() == DialogResult.OK)
+                {
+                    return;
                 }
             }
         }
@@ -100,6 +144,7 @@ namespace Atta_Bots_Kids
                     Globals.PosicionInstrucciones = 55;
                     ciclo = new Contenedor(Globals.Funciones.Ciclo, "111");
                     instrucciones.Add(ciclo);
+                    Globals.posicionCiclo = instrucciones.IndexOf(ciclo);
                 }
             }
             else
@@ -176,7 +221,30 @@ namespace Atta_Bots_Kids
         //se llama cuando se desactiva el ciclo
         private void ajustarInstrucciones()
         {
-            if(instrucciones.Last() == ciclo)
+            if (instrucciones.Last() == ciclo)
+            {
+                instrucciones.Remove(ciclo);
+            }
+            else
+            {
+                int posCiclo = instrucciones.IndexOf(ciclo);
+                instrucciones.Remove(ciclo);
+                //int ejeY;
+                for (int i = posCiclo; i < instrucciones.Count; i++)
+                {
+                    instrucciones[i].ajustarEjeX(-50);
+                    //instrucciones[i].actualizarPosicion(Globals.PosicionInstrucciones, ejeY);
+                }
+            }
+            /*instrucciones.RemoveAt(Globals.posicionCiclo);
+            int ejeY;
+            for (int i = Globals.posicionCiclo; i < instrucciones.Count; i++)
+            {
+                ejeY = Globals.tamanioInstrucciones * i + Globals.espacioEntreInstrucciones * i;
+                instrucciones[i].actualizarPosicion(Globals.PosicionInstrucciones, ejeY);
+            }
+            Globals.posicionCiclo = -1;*/
+            /*if(instrucciones.Last() == ciclo)
             {
                 instrucciones.Remove(ciclo);
             }
@@ -191,7 +259,7 @@ namespace Atta_Bots_Kids
                     ejeY = Globals.tamanioInstrucciones * i + Globals.espacioEntreInstrucciones * i;
                     instrucciones[i].actualizarPosicion(Globals.PosicionInstrucciones, ejeY);
                 }
-            }
+            }*/
         }
         // Pop-up de confirmación
         public static DialogResult InputBoxConfirmacion(string title, string promptText)
@@ -241,6 +309,49 @@ namespace Atta_Bots_Kids
             form.Controls.AddRange(new Control[] { label, buttonOk, buttonCancel });
             form.AcceptButton = buttonOk;
             form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog(); //mostrar el pop-up
+
+            return dialogResult;
+        }
+
+        public static DialogResult InputBoxLimiteAlcanzado()
+        {
+            // elementos del pop-up
+            Form form = new Form();
+            Label label = new Label();
+            System.Windows.Forms.Button buttonOk = new System.Windows.Forms.Button();
+
+
+            form.Text = "Alerta"; //titulo del pop-up
+            label.Text = "Limite de instrucciones alcanzado"; //texto del pop-up
+
+            // funcionalidad de los botones del pop-up
+            buttonOk.Text = "OK";
+            buttonOk.DialogResult = DialogResult.OK;
+
+            // posicionamiento y diseño de los elementos
+            label.SetBounds(36, 36, 372, 13);
+            label.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
+
+            buttonOk.SetBounds(40, 100, 130, 50);
+            buttonOk.Font = new System.Drawing.Font("Bahnschrift SemiLight", 14F);
+            buttonOk.Name = "BotonOk";
+            buttonOk.TabIndex = 2;
+            buttonOk.UseVisualStyleBackColor = true;
+
+            // configuración del pop-up
+            label.AutoSize = true;
+            form.ClientSize = new Size(361, 218);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(196)))), ((int)(((byte)(235)))));
+
+            // agregar elementos al pop-up
+            form.Controls.AddRange(new Control[] { label, buttonOk});
+            form.AcceptButton = buttonOk;
 
             DialogResult dialogResult = form.ShowDialog(); //mostrar el pop-up
 
