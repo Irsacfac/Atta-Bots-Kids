@@ -41,6 +41,7 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Historial = new System.Windows.Forms.Panel();
             this.DisplayHistorial = new System.Windows.Forms.Panel();
+            this.Limpiar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Botones = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.Izquierda = new System.Windows.Forms.Button();
             this.Atras = new System.Windows.Forms.Button();
             this.Avanzar = new System.Windows.Forms.Button();
-            this.Limpiar = new System.Windows.Forms.Button();
             this.Herramientas.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Historial.SuspendLayout();
@@ -103,6 +103,7 @@
             this.limpiarHistorialToolStripMenuItem.Name = "limpiarHistorialToolStripMenuItem";
             this.limpiarHistorialToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.limpiarHistorialToolStripMenuItem.Text = "Limpiar Historial";
+            this.limpiarHistorialToolStripMenuItem.Click += new System.EventHandler(this.limpiarHistorialToolStripMenuItem_Click);
             // 
             // generarDocumentoToolStripMenuItem
             // 
@@ -150,6 +151,20 @@
             this.DisplayHistorial.Name = "DisplayHistorial";
             this.DisplayHistorial.Size = new System.Drawing.Size(361, 584);
             this.DisplayHistorial.TabIndex = 1;
+            // 
+            // Limpiar
+            // 
+            this.Limpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Limpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Limpiar.BackgroundImage")));
+            this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Limpiar.FlatAppearance.BorderSize = 0;
+            this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Limpiar.Location = new System.Drawing.Point(275, 4);
+            this.Limpiar.Name = "Limpiar";
+            this.Limpiar.Size = new System.Drawing.Size(56, 65);
+            this.Limpiar.TabIndex = 0;
+            this.Limpiar.UseVisualStyleBackColor = true;
+            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
             // 
             // label1
             // 
@@ -310,20 +325,6 @@
             this.Avanzar.TabIndex = 0;
             this.Avanzar.UseVisualStyleBackColor = true;
             this.Avanzar.Click += new System.EventHandler(this.Avanzar_Click);
-            // 
-            // Limpiar
-            // 
-            this.Limpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Limpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Limpiar.BackgroundImage")));
-            this.Limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Limpiar.FlatAppearance.BorderSize = 0;
-            this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Limpiar.Location = new System.Drawing.Point(275, 4);
-            this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(56, 65);
-            this.Limpiar.TabIndex = 0;
-            this.Limpiar.UseVisualStyleBackColor = true;
-            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
             // 
             // Main
             // 

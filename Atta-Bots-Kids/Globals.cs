@@ -20,7 +20,7 @@ public static class Globals
     }
     public static string[] codigos = { "del", "atr", "izq", "der", "obs", "rep","stp","ply" };
     public static int tamanioInstrucciones = 60;
-    private static int posicionInstrucciones = 3;
+    private static int posicionInstrucciones = 5;
     public static int PosicionInstrucciones
     {
         get

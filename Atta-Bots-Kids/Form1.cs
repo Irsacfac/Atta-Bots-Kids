@@ -153,6 +153,7 @@ namespace Atta_Bots_Kids
                     cicloActivo = !cicloActivo;
                     Globals.PosicionInstrucciones = 5;
                     ajustarInstrucciones();
+                    Globals.posicionCiclo = -1;
                 }
             }
         }
@@ -199,21 +200,25 @@ namespace Atta_Bots_Kids
         {
             if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
             {
-                Console.WriteLine("OK");
-                DisplayHistorial.Controls.Clear();
-                DisplayHistorial.Controls.Add(Limpiar);
-                foreach (Contenedor instruccion in instrucciones)
-                {
-                    instruccion.Clear();
-                }
-                instrucciones.Clear();
-                Globals.CantInstrucciones = 0;
-                cicloActivo = true;
-                detectarObstaculo = true;
-                Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton;
-                Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton;
-                Globals.PosicionInstrucciones = 5;
+                limpiarHistorial();
             }
+        }
+        private void limpiarHistorial()
+        {
+            Console.WriteLine("OK");
+            DisplayHistorial.Controls.Clear();
+            DisplayHistorial.Controls.Add(Limpiar);
+            foreach (Contenedor instruccion in instrucciones)
+            {
+                instruccion.Clear();
+            }
+            instrucciones.Clear();
+            Globals.CantInstrucciones = 0;
+            cicloActivo = true;
+            detectarObstaculo = true;
+            Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton;
+            Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton;
+            Globals.PosicionInstrucciones = 5;
         }
         //se llama cuando se desactiva el ciclo
         private void ajustarInstrucciones()
@@ -353,6 +358,14 @@ namespace Atta_Bots_Kids
             DialogResult dialogResult = form.ShowDialog(); //mostrar el pop-up
 
             return dialogResult;
+        }
+
+        private void limpiarHistorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
+            {
+                limpiarHistorial();
+            }
         }
     }
 }

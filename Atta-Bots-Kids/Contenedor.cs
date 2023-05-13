@@ -102,12 +102,54 @@ namespace Atta_Bots_Kids
             }
             else
             {
-                int pos = instrucciones.IndexOf(this);
-                int ejeY;
+                //int pos = instrucciones.IndexOf(this);
+                int pos, instruccion;
+                pos = instruccion = instrucciones.IndexOf(this);
                 instrucciones.Remove(this);
+                int ejeY;
+                if(posicionCiclo != -1 && posicionCiclo < pos) 
+                {
+                    instruccion--;
+                }else if(posicionCiclo != -1 && pos < posicionCiclo)
+                {
+                    posicionCiclo--;
+                }
                 for (int i = pos; i < instrucciones.Count; i++)
                 {
-                    if(i != posicionCiclo)
+                    ejeY = tamanioInstrucciones * instruccion + espacioEntreInstrucciones * instruccion;
+                    if (!instrucciones[i].isCiclo())
+                    {
+                        instrucciones[i].actualizarPosicion(instrucciones[i].GetEjeX(), ejeY);
+                        instruccion++;
+                    }
+                }
+                /*int ejeY;
+                int ejeX = PosicionInstrucciones;
+                int contador = instrucciones.Count - 1;
+                int instruccion = CantInstrucciones - 1;
+                while (instrucciones[contador] != this) 
+                {
+                    ejeY = tamanioInstrucciones * instruccion + espacioEntreInstrucciones * instruccion;
+                    if (instrucciones[contador].actualizarPosicion(ejeX,ejeY))
+                    {
+                        instruccion--;
+                    }
+                    else
+                    {
+                        ejeY = 5;
+                    }
+                    contador--;
+                }
+                instrucciones.Remove(this);*/
+                /*for (int i = instrucciones.Count - 1; i > pos; i--)
+                {
+                    if()
+                    /*if (i != posicionCiclo)
+                    {
+                        ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
+                        instrucciones[i].actualizarPosicion(boton.Left, ejeY);
+                    };
+                    if (i != posicionCiclo)
                     {
                         ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
                         instrucciones[i].actualizarPosicion(PosicionInstrucciones, ejeY);
@@ -120,8 +162,8 @@ namespace Atta_Bots_Kids
                     {
                         ejeY = tamanioInstrucciones * i + espacioEntreInstrucciones * i;
                         instrucciones[i].actualizarPosicion(55, ejeY);
-                    }*/
-                }
+                    }
+                }*/
                 Console.WriteLine("borrado");
             }
             eliminarInstruccion();
@@ -140,7 +182,6 @@ namespace Atta_Bots_Kids
         {
             imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY + historial.AutoScrollPosition.Y);
             boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY + historial.AutoScrollPosition.Y);
-            
         }
         public void ajustarEjeX(int ajuste)
         {
@@ -150,6 +191,14 @@ namespace Atta_Bots_Kids
         public override string ToString()
         {
             return codigo + "-" + valor;
+        }
+        public int GetEjeX()
+        {
+            return imagenInstruccion.Left;
+        }
+        private bool isCiclo()
+        {
+            return boton == null;
         }
     }
 }
