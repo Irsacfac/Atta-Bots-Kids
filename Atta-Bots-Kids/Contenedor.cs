@@ -25,19 +25,14 @@ namespace Atta_Bots_Kids
             boton = null;
             imagenInstruccion = null;
         }
-        public Contenedor(Panel historial, List<Contenedor> instrucciones, Funciones funcion, string valor, bool ciclo)
+        public Contenedor(Panel historial, List<Contenedor> instrucciones, Funciones funcion, string valor)
         {
             this.instrucciones = instrucciones;
             this.historial = historial; 
             this.valor = valor;
-            int ajuste = 0;
-            if (!ciclo)
-            {
-                ajuste = 50;
-            }
-            InitializeComponent(ajuste);
+            InitializeComponent(); // inicializar componentes
             codigo = codigos[(int)funcion];
-            switch (funcion)
+            switch (funcion) // seleccionar imagen del boton
             {
                 case Funciones.Avanzar:
                     imagenInstruccion.BackgroundImage = Properties.Resources.Avanzar_Boton;
@@ -56,7 +51,7 @@ namespace Atta_Bots_Kids
             }
         }
 
-        private void InitializeComponent(int ajuste)
+        private void InitializeComponent()
         {
             int ejeX = PosicionInstrucciones;
             int ejeY = tamanioInstrucciones * CantInstrucciones + espacioEntreInstrucciones * CantInstrucciones;
@@ -92,17 +87,17 @@ namespace Atta_Bots_Kids
         //elimina la instruccion deseada, no se pregunta por confirmación
         private void Boton_Click(object sender, EventArgs e)
         {
-            historial.Controls.Remove(boton);
+            historial.Controls.Remove(boton); // quitar del panel
             historial.Controls.Remove(imagenInstruccion);
-            boton.Dispose();
+            boton.Dispose(); // eliminar
             imagenInstruccion.Dispose();
+            // acomodar el resto de instrucciones
             if (instrucciones.Last() == this)
             {
                 instrucciones.Remove(this);
             }
             else
             {
-                //int pos = instrucciones.IndexOf(this);
                 int pos, instruccion;
                 pos = instruccion = instrucciones.IndexOf(this);
                 instrucciones.Remove(this);

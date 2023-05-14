@@ -43,7 +43,7 @@ namespace Atta_Bots_Kids
                     // si se confirma se agrega la instruccion a la lista
                     if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Avanzar, movimiento.TrackbarValue, cicloActivo));
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Avanzar, movimiento.TrackbarValue));
                         value = movimiento.TrackbarValue;
                         Console.WriteLine(value);
                         Globals.agregarInstruccion();
@@ -71,7 +71,7 @@ namespace Atta_Bots_Kids
                     // si se confirma se agrega la instruccion a la lista
                     if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Retroceder, movimiento.TrackbarValue, cicloActivo));
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Retroceder, movimiento.TrackbarValue));
                         value = movimiento.TrackbarValue;
                         Console.WriteLine(value);
                         Globals.agregarInstruccion();
@@ -98,7 +98,7 @@ namespace Atta_Bots_Kids
                     // si se confirma se agrega la instruccion a la lista
                     if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Izquierda, giro.TrackbarValue, cicloActivo));
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Izquierda, giro.TrackbarValue));
                         Console.WriteLine(giro.TrackbarValue);
                         Globals.agregarInstruccion();
                     }
@@ -124,7 +124,7 @@ namespace Atta_Bots_Kids
                     // si se confirma se agrega la instruccion a la lista
                     if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Derecha, giro.TrackbarValue, cicloActivo));
+                        instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Derecha, giro.TrackbarValue));
                         Globals.agregarInstruccion();
                         Console.WriteLine(giro.TrackbarValue);
                     }
