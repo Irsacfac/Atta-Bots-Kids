@@ -170,8 +170,6 @@ namespace Atta_Bots_Kids
         }
         public void Clear()
         {
-            //historial.Controls.Remove(this.boton);
-            //historial.Controls.Remove(this.imagenInstruccion);
             if (boton != null)
             {
                 boton.Dispose();

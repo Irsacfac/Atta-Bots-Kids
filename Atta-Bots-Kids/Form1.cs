@@ -13,7 +13,6 @@ namespace Atta_Bots_Kids
 {
     public partial class Main : Form
     {
-        //private Label trackbarValue;
         private bool cicloActivo;
         private bool detectarObstaculo;
         private List<Contenedor> instrucciones;
@@ -23,22 +22,25 @@ namespace Atta_Bots_Kids
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9");
             InitializeComponent();
             //serialPort1.Open();
-            cicloActivo = true;
-            detectarObstaculo = true;
+            cicloActivo = false;
+            detectarObstaculo = false;
             instrucciones = new List<Contenedor>();
             Globals.posicionCiclo = -1;
-            //contenedores.Add(new Contenedor(DisplayHistorial,5,0, Globals.Funciones.Avanzar));
-            //contenedores.Add(new Contenedor(DisplayHistorial, 5, Globals.tamanioInstrucciones + Globals.espacioEntreInstrucciones, Globals.Funciones.Izquierda));
         }
 
-        // El codigo aqui se activara cuando el usuario presione el boton "Avanzar"
+        // 
+        // acciones al hacer click
+        //
         private void Avanzar_Click(object sender, EventArgs e)
         {
+            // se revisa si se alcanzó el limite de instrcciones
             if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
                 string value = "";
+                // se llama al Form2 (Movimiento), para solicitar los datos o cancelar la acción
                 using (Movimiento movimiento = new Movimiento("Movimiento", "¿Cuanto quieres avanzar?"))
                 {
+                    // si se confirma se agrega la instruccion a la lista
                     if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Avanzar, movimiento.TrackbarValue, cicloActivo));
@@ -59,11 +61,14 @@ namespace Atta_Bots_Kids
 
         private void Atras_Click(object sender, EventArgs e)
         {
+            // se revisa si se alcanzó el limite de instrcciones
             if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
                 string value = "";
+                // se llama al Form2 (Movimiento), para solicitar los datos o cancelar la acción
                 using (Movimiento movimiento = new Movimiento("Movimiento", "¿Cuanto quieres retroceder?"))
                 {
+                    // si se confirma se agrega la instruccion a la lista
                     if (movimiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Retroceder, movimiento.TrackbarValue, cicloActivo));
@@ -84,10 +89,13 @@ namespace Atta_Bots_Kids
 
         private void Izquierda_Click(object sender, EventArgs e)
         {
+            // se revisa si se alcanzó el limite de instrcciones
             if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
+                // se llama al Form3 (Giro), para solicitar los datos o cancelar la acción
                 using (Giro giro = new Giro("¿Cuanto quieres girar?", false))
                 {
+                    // si se confirma se agrega la instruccion a la lista
                     if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Izquierda, giro.TrackbarValue, cicloActivo));
@@ -107,14 +115,16 @@ namespace Atta_Bots_Kids
 
         private void Derecha_Click(object sender, EventArgs e)
         {
+            // se revisa si se alcanzó el limite de instrcciones
             if (Globals.CantInstrucciones != Globals.limiteInstrucciones)
             {
+                // se llama al Form3 (Giro), para solicitar los datos o cancelar la acción
                 using (Giro giro = new Giro("¿Cuanto quieres girar?", true))
                 {
+                    // si se confirma se agrega la instruccion a la lista
                     if (giro.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         instrucciones.Add(new Contenedor(DisplayHistorial, instrucciones, Globals.Funciones.Derecha, giro.TrackbarValue, cicloActivo));
-                        //value = movimiento.TrackbarValue;
                         Globals.agregarInstruccion();
                         Console.WriteLine(giro.TrackbarValue);
                     }
@@ -131,17 +141,18 @@ namespace Atta_Bots_Kids
 
         private void Ciclo_Click(object sender, EventArgs e)
         {
-            if (cicloActivo)
+            // preguntar si se desea activar/desactivar el ciclo
+            if (!cicloActivo)
             {
                 if (InputBoxConfirmacion("Confirmar", "¿Desea agregar un ciclo?") == DialogResult.OK)
                 {
                     Console.WriteLine("OK");
-                    this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton_Apagado;
-                    cicloActivo = !cicloActivo;
-                    Globals.PosicionInstrucciones = 55;
-                    ciclo = new Contenedor(Globals.Funciones.Ciclo, "111");
-                    instrucciones.Add(ciclo);
-                    Globals.posicionCiclo = instrucciones.IndexOf(ciclo);
+                    Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton_Apagado; //cambiar imagen del boton
+                    cicloActivo = !cicloActivo; // activar ciclo
+                    Globals.PosicionInstrucciones = 55; // cambiar ejeX de las nuevas instrucciones
+                    ciclo = new Contenedor(Globals.Funciones.Ciclo, "111"); // crear instruccion
+                    instrucciones.Add(ciclo); // agregar instruccion
+                    Globals.posicionCiclo = instrucciones.IndexOf(ciclo); // posición del ciclo
                 }
             }
             else
@@ -149,24 +160,25 @@ namespace Atta_Bots_Kids
                 if (InputBoxConfirmacion("Confirmar", "¿Desea quitar el ciclo?") == DialogResult.OK)
                 {
                     Console.WriteLine("OK");
-                    this.Ciclo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Repetir_Boton;
-                    cicloActivo = !cicloActivo;
-                    Globals.PosicionInstrucciones = 5;
+                    Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton; //cambiar imagen del boton
+                    cicloActivo = !cicloActivo; // desactivar ciclo
+                    Globals.PosicionInstrucciones = 5; // cambiar ejeX de las nuevas instrucciones
                     ajustarInstrucciones();
-                    Globals.posicionCiclo = -1;
+                    Globals.posicionCiclo = -1; // indicar que no hay ciclo
                 }
             }
         }
 
         private void Obstaculo_Click(object sender, EventArgs e)
         {
-            if (detectarObstaculo)
+            // preguntar si se desea activar/desactivar la detección de objetos
+            if (!detectarObstaculo)
             {
                 if (InputBoxConfirmacion("Confirmar", "¿Desea detectar obstáculos?") == DialogResult.OK)
                 {
                     Console.WriteLine("OK");
-                    this.Obstaculo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Obstaculo_Boton_Apagado;
-                    detectarObstaculo = !detectarObstaculo;
+                    Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton_Apagado;//cambiar imagen del boton
+                    detectarObstaculo = !detectarObstaculo; // detectar obstaculos
                 }
             }
             else
@@ -174,8 +186,8 @@ namespace Atta_Bots_Kids
                 if (InputBoxConfirmacion("Confirmar", "¿Desea no detectar obstáculos?") == DialogResult.OK)
                 {
                     Console.WriteLine("OK");
-                    this.Obstaculo.BackgroundImage = global::Atta_Bots_Kids.Properties.Resources.Obstaculo_Boton;
-                    detectarObstaculo = !detectarObstaculo;
+                    Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton;//cambiar imagen del boton
+                    detectarObstaculo = !detectarObstaculo; // dejar de detactar obstaculos
                 }
             }
         }
@@ -202,38 +214,50 @@ namespace Atta_Bots_Kids
             {
                 limpiarHistorial();
             }
+        }   
+        private void limpiarHistorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
+            {
+                limpiarHistorial();
+            }
         }
+        // 
+        // funciones auxiliares
+        //
         private void limpiarHistorial()
         {
             Console.WriteLine("OK");
-            DisplayHistorial.Controls.Clear();
-            DisplayHistorial.Controls.Add(Limpiar);
+            DisplayHistorial.Controls.Clear(); // eliminar todos los controles del panel
+            DisplayHistorial.Controls.Add(Limpiar); // agregamos el boton "Limpiar"
             foreach (Contenedor instruccion in instrucciones)
             {
-                instruccion.Clear();
+                instruccion.Clear(); // nos desacemos de las instrucciones para que no haya un memory leak
             }
-            instrucciones.Clear();
-            Globals.CantInstrucciones = 0;
-            cicloActivo = true;
-            detectarObstaculo = true;
-            Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton;
-            Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton;
-            Globals.PosicionInstrucciones = 5;
+            instrucciones.Clear(); // limpiamos la lista
+            Globals.CantInstrucciones = 0; // hacemos un reset al numeo de instrucciones
+            cicloActivo = false; // no tenemos un ciclo
+            detectarObstaculo = false; // no detectamos obstaculos
+            Obstaculo.BackgroundImage = Properties.Resources.Obstaculo_Boton; // cambiamos la imagen en caso de que sea la deseada
+            Ciclo.BackgroundImage = Properties.Resources.Repetir_Boton; // cambiamos la imagen en caso de que sea la deseada
+            Globals.PosicionInstrucciones = 5; // nuevo ejeX de las instrucciones en el historial
         }
+
         //se llama cuando se desactiva el ciclo
         private void ajustarInstrucciones()
         {
+            // si el ciclo era la ultima instruccion solo se borra
             if (instrucciones.Last() == ciclo)
             {
                 instrucciones.Remove(ciclo);
             }
             else
             {
-                int posCiclo = instrucciones.IndexOf(ciclo);
-                instrucciones.Remove(ciclo);
-                //int ejeY;
+                int posCiclo = instrucciones.IndexOf(ciclo); // conseguimos la posición del ciclo
+                instrucciones.Remove(ciclo); // eliminamos el ciclo del historial
                 for (int i = posCiclo; i < instrucciones.Count; i++)
                 {
+                    // ajustamos la el ejeX de las instrucciones que se agregaron despues del ciclo
                     instrucciones[i].ajustarEjeX(-50);
                     //instrucciones[i].actualizarPosicion(Globals.PosicionInstrucciones, ejeY);
                 }
@@ -263,7 +287,10 @@ namespace Atta_Bots_Kids
                 }
             }*/
         }
-        // Pop-up de confirmación
+        // 
+        // Pop-ups
+        //
+        // Pop-up de confirmación, aparece al momento de realizar alguna acción que requiera ser confirmada o rechazada
         public static DialogResult InputBoxConfirmacion(string title, string promptText)
         {
             // elementos del pop-up
@@ -316,7 +343,7 @@ namespace Atta_Bots_Kids
 
             return dialogResult;
         }
-
+        // pop-up para indicar que el limite de instrucciones a sido alcanzada
         public static DialogResult InputBoxLimiteAlcanzado()
         {
             // elementos del pop-up
@@ -352,20 +379,12 @@ namespace Atta_Bots_Kids
             form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(196)))), ((int)(((byte)(235)))));
 
             // agregar elementos al pop-up
-            form.Controls.AddRange(new Control[] { label, buttonOk});
+            form.Controls.AddRange(new Control[] { label, buttonOk });
             form.AcceptButton = buttonOk;
 
             DialogResult dialogResult = form.ShowDialog(); //mostrar el pop-up
 
             return dialogResult;
-        }
-
-        private void limpiarHistorialToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
-            {
-                limpiarHistorial();
-            }
         }
     }
 }
