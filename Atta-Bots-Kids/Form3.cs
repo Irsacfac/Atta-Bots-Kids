@@ -19,6 +19,7 @@ namespace Atta_Bots_Kids
             texto.Text = promptText; //texto del pop-up
             TrackbarValue = radialSlider1.Value.ToString();
             radialSlider1.ValueChanged += new Syncfusion.Windows.Forms.Tools.RadialSlider.ValueChangedEventHandler(radialSlider1_ValueChanged);
+            // definir si los numeros ascienden en sentido horario o antiorario
             if (sentidoHorario)
             {
                 radialSlider1.RadialDirection = Syncfusion.Windows.Forms.Tools.RadialDirection.Clockwise;
