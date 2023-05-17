@@ -66,4 +66,7 @@ public static class Globals
         }
     }
     public static int limiteInstrucciones = 20;
+
+    public static string nombrePuerto = "COM6";
+    public static int velocidadPuerto = 5;
 }

@@ -16,8 +16,8 @@ namespace Atta_Bots_Kids
         public Movimiento(string title, string promptText)
         {
             InitializeComponent();
-            this.Text = title; //titulo del pop-up
-            texto.Text = promptText; //texto del pop-up
+            this.Text = title; //titulo del dialog box
+            texto.Text = promptText; //texto del dialog box
             TrackbarValue = trackbar_Label.Text = trackBar1.Value.ToString();
         }
 

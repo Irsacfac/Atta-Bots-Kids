@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Atta_Bots_Kids
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9"); // llave de acceso de Syncfusion
             InitializeComponent();
-            //serialPort1.Open();
+            configSerialPort();
             cicloActivo = false;
             detectarObstaculo = false;
             instrucciones = new List<Contenedor>();
@@ -288,22 +289,22 @@ namespace Atta_Bots_Kids
             }*/
         }
         // 
-        // Pop-ups
+        // dialog boxes
         //
-        // Pop-up de confirmación, aparece al momento de realizar alguna acción que requiera ser confirmada o rechazada
+        // Dialog box de confirmación, aparece al momento de realizar alguna acción que requiera ser confirmada o rechazada
         public static DialogResult InputBoxConfirmacion(string title, string promptText)
         {
-            // elementos del pop-up
+            // elementos del dialog box
             Form form = new Form();
             Label label = new Label();
             System.Windows.Forms.Button buttonOk = new System.Windows.Forms.Button();
             System.Windows.Forms.Button buttonCancel = new System.Windows.Forms.Button();
 
 
-            form.Text = title; //titulo del pop-up
-            label.Text = promptText; //texto del pop-up
+            form.Text = title; //titulo del dialog box
+            label.Text = promptText; //texto del dialog box
 
-            // funcionalidad de los botones del pop-up
+            // funcionalidad de los botones del dialog box
             buttonOk.Text = "OK";
             buttonCancel.Text = "Cancelar";
             buttonOk.DialogResult = DialogResult.OK;
@@ -325,7 +326,7 @@ namespace Atta_Bots_Kids
             buttonCancel.TabIndex = 2;
             buttonCancel.UseVisualStyleBackColor = true;
 
-            // configuración del pop-up
+            // configuración del dialog box
             label.AutoSize = true;
             form.ClientSize = new Size(361, 218);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -334,28 +335,28 @@ namespace Atta_Bots_Kids
             form.MaximizeBox = false;
             form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(196)))), ((int)(((byte)(235)))));
 
-            // agregar elementos al pop-up
+            // agregar elementos al dialog box
             form.Controls.AddRange(new Control[] { label, buttonOk, buttonCancel });
             form.AcceptButton = buttonOk;
             form.CancelButton = buttonCancel;
 
-            DialogResult dialogResult = form.ShowDialog(); //mostrar el pop-up
+            DialogResult dialogResult = form.ShowDialog(); //mostrar el dialog box
 
             return dialogResult;
         }
-        // pop-up para indicar que el limite de instrucciones a sido alcanzada
+        // Dialog box para indicar que el limite de instrucciones a sido alcanzada
         public static DialogResult InputBoxLimiteAlcanzado()
         {
-            // elementos del pop-up
+            // elementos del dialog box
             Form form = new Form();
             Label label = new Label();
             System.Windows.Forms.Button buttonOk = new System.Windows.Forms.Button();
 
 
-            form.Text = "Alerta"; //titulo del pop-up
-            label.Text = "Limite de instrucciones alcanzado"; //texto del pop-up
+            form.Text = "Alerta"; //titulo del dialog box
+            label.Text = "Limite de instrucciones alcanzado"; //texto del dialog box
 
-            // funcionalidad de los botones del pop-up
+            // funcionalidad de los botones del dialog box
             buttonOk.Text = "OK";
             buttonOk.DialogResult = DialogResult.OK;
 
@@ -369,7 +370,7 @@ namespace Atta_Bots_Kids
             buttonOk.TabIndex = 2;
             buttonOk.UseVisualStyleBackColor = true;
 
-            // configuración del pop-up
+            // configuración del dialog box
             label.AutoSize = true;
             form.ClientSize = new Size(361, 218);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -378,13 +379,21 @@ namespace Atta_Bots_Kids
             form.MaximizeBox = false;
             form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(196)))), ((int)(((byte)(235)))));
 
-            // agregar elementos al pop-up
+            // agregar elementos al dialog box
             form.Controls.AddRange(new Control[] { label, buttonOk });
             form.AcceptButton = buttonOk;
 
-            DialogResult dialogResult = form.ShowDialog(); //mostrar el pop-up
+            DialogResult dialogResult = form.ShowDialog(); //mostrar el dialog box
 
             return dialogResult;
+        }
+
+        private void configSerialPort()
+        {
+            int velocidad = 5;
+            serialPort1 = new SerialPort("nombrepuerto", velocidad); //Asignacion de valores a los combo box de puerto y velocidad
+            serialPort1.Open();
+            serialPort1.WriteLine("0");
         }
     }
 }

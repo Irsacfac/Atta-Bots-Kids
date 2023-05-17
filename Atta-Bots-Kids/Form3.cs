@@ -16,7 +16,7 @@ namespace Atta_Bots_Kids
         public Giro(string promptText, bool sentidoHorario)
         {
             InitializeComponent();
-            texto.Text = promptText; //texto del pop-up
+            texto.Text = promptText; //texto del dialog box
             TrackbarValue = radialSlider1.Value.ToString();
             radialSlider1.ValueChanged += new Syncfusion.Windows.Forms.Tools.RadialSlider.ValueChangedEventHandler(radialSlider1_ValueChanged);
             // definir si los numeros ascienden en sentido horario o antiorario
