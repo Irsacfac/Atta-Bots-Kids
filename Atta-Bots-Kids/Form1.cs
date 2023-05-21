@@ -223,6 +223,13 @@ namespace Atta_Bots_Kids
                 limpiarHistorial();
             }
         }
+        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (InputBoxInformación("Versión", "Atta-Bots Kids versión: " + Globals.version) == DialogResult.OK)
+            {
+                
+            }
+        }
         // 
         // funciones auxiliares
         //
@@ -288,6 +295,19 @@ namespace Atta_Bots_Kids
                 }
             }*/
         }
+        //Se configura el puerto serial
+        private void configSerialPort()
+        {
+            int velocidad = 5;
+            serialPort1 = new SerialPort("nombrepuerto", velocidad); //Asignacion de valores a los combo box de puerto y velocidad
+            //serialPort1.Open();
+            //serialPort1.WriteLine("0");
+        }
+        // llama un dialog box que indica que se alcanzó el limite de instrucciones
+        public static DialogResult InputBoxLimiteAlcanzado()
+        {
+            return InputBoxInformación("Alerta", "Limite de instrucciones alcanzado");
+        }
         // 
         // dialog boxes
         //
@@ -345,7 +365,7 @@ namespace Atta_Bots_Kids
             return dialogResult;
         }
         // Dialog box para indicar que el limite de instrucciones a sido alcanzada
-        public static DialogResult InputBoxLimiteAlcanzado()
+        public static DialogResult InputBoxInformación(string titulo, string mensaje)
         {
             // elementos del dialog box
             Form form = new Form();
@@ -353,8 +373,8 @@ namespace Atta_Bots_Kids
             System.Windows.Forms.Button buttonOk = new System.Windows.Forms.Button();
 
 
-            form.Text = "Alerta"; //titulo del dialog box
-            label.Text = "Limite de instrucciones alcanzado"; //texto del dialog box
+            form.Text = titulo; //titulo del dialog box
+            label.Text = mensaje; //texto del dialog box
 
             // funcionalidad de los botones del dialog box
             buttonOk.Text = "OK";
@@ -386,14 +406,6 @@ namespace Atta_Bots_Kids
             DialogResult dialogResult = form.ShowDialog(); //mostrar el dialog box
 
             return dialogResult;
-        }
-
-        private void configSerialPort()
-        {
-            int velocidad = 5;
-            serialPort1 = new SerialPort("nombrepuerto", velocidad); //Asignacion de valores a los combo box de puerto y velocidad
-            serialPort1.Open();
-            serialPort1.WriteLine("0");
         }
     }
 }

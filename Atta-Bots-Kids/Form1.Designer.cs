@@ -123,13 +123,14 @@
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.versionToolStripMenuItem.Text = "Versión";
+            this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // Historial
