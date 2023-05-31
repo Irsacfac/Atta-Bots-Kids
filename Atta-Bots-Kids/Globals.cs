@@ -65,9 +65,10 @@ public static class Globals
             posCiclo = value;
         }
     }
-    public static int limiteInstrucciones = 2;
+    public static int limiteInstrucciones = 20;
 
     public static string nombrePuerto = "COM6";
     public static int velocidadPuerto = 9600;
-    public static string version = "0.6.3";
+    public static string version = "0.7.0";
+    public static string urlManualUsuario = "https://docs.google.com/document/d/17HvavxANIRULvxEHveDGZe1o2VDpC7NrD-Ffh2iQmK8/edit";
 }

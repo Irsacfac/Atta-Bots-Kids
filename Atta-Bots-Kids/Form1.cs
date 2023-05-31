@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Syncfusion.Windows.Forms.Tools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -20,9 +24,10 @@ namespace Atta_Bots_Kids
         private Contenedor ciclo;
         public Main()
         {
+            //pruebaPuerto();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTc5NDk3M0AzMjMxMmUzMTJlMzMzNUZLTGw0RG5rRDVYUGVTMHJSamlIaEM2MWpHWWxEdkJKMEtMd21LSi9ybzQ9"); // llave de acceso de Syncfusion
             InitializeComponent();
-            configSerialPort();
+            //autodetectarPuertoCOM();
             cicloActivo = false;
             detectarObstaculo = false;
             instrucciones = new List<Contenedor>();
@@ -198,6 +203,30 @@ namespace Atta_Bots_Kids
             if (InputBoxConfirmacion("Confirmar", "¿Desea cargar el código?") == DialogResult.OK)
             {
                 Console.WriteLine("OK");
+                autodetectarPuertoCOM();
+                if (!serialPort1.IsOpen)
+                {
+                    InputBoxInformación("Error", "Dispositivo compatible no encontrado");
+                    return;
+                }
+                string str = "";
+                foreach (Contenedor instruccion in instrucciones)
+                {
+                    str += instruccion.ToString() + ",";
+                }
+                if (detectarObstaculo)
+                {
+                    str += Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-1,";
+                }
+                else
+                {
+                    str += Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-0,";
+                }
+                str += Globals.codigos[(int)Globals.Funciones.Play] + "-0";
+                Console.WriteLine(str);
+                serialPort1.WriteLine(str);
+                Thread.Sleep(200);
+                serialPort1.Close();
             }
         }
 
@@ -206,6 +235,18 @@ namespace Atta_Bots_Kids
             if (InputBoxConfirmacion("Confirmar", "¿Desea detener el robot?") == DialogResult.OK)
             {
                 Console.WriteLine("OK");
+                autodetectarPuertoCOM();
+                if (!serialPort1.IsOpen)
+                {
+                    InputBoxInformación("Error", "Dispositivo compatible no encontrado");
+                    return;
+                }
+                string str = Globals.codigos[(int)Globals.Funciones.Pausa]  + "-0,";
+                str += Globals.codigos[(int)Globals.Funciones.Play] + "-0";
+                Console.WriteLine(str);
+                serialPort1.WriteLine(str);
+                Thread.Sleep(200);
+                serialPort1.Close();
             }
         }
 
@@ -228,6 +269,34 @@ namespace Atta_Bots_Kids
             if (InputBoxInformación("Versión", "Atta-Bots Kids versión: " + Globals.version) == DialogResult.OK)
             {
                 
+            }
+        }
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Globals.urlManualUsuario);
+            }
+            catch (Exception exc1)
+            {
+                // System.ComponentModel.Win32Exception is a known exception that occurs when Firefox is default browser.            // It actually opens the browser but STILL throws this exception so we can just ignore it.  If not this exception,
+                // then attempt to open the URL in IE instead.
+                if (exc1.GetType().ToString() != "System.ComponentModel.Win32Exception")
+                {
+                    // sometimes throws exception so we have to just ignore
+                    // this is a common .NET bug that no one online really has a great reason for so now we just need to try to open
+                    // the URL using IE if we can.
+                    try
+                    {
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo("IExplore.exe", Globals.urlManualUsuario);
+                        System.Diagnostics.Process.Start(startInfo);
+                        startInfo = null;
+                    }
+                    catch (Exception exc2)
+                    {
+                        // still nothing we can do so just show the error to the user here.
+                    }
+                }
             }
         }
         // 
@@ -304,9 +373,112 @@ namespace Atta_Bots_Kids
             //serialPort1.WriteLine("0");
         }
         // llama un dialog box que indica que se alcanzó el limite de instrucciones
-        public static DialogResult InputBoxLimiteAlcanzado()
+        private static DialogResult InputBoxLimiteAlcanzado()
         {
             return InputBoxInformación("Alerta", "Limite de instrucciones alcanzado");
+        }
+        //buscar el puerto serial donde se encuentra el Arduino
+        private void autodetectarPuertoCOM()
+        {
+            //serialPort1.BaudRate = Globals.velocidadPuerto;
+            foreach (string s in SerialPort.GetPortNames())
+            {
+                serialPort1.Close();
+                serialPort1.Dispose();
+                bool portfound = false;
+                //serialPort1.PortName = s;
+                serialPort1 = new SerialPort(s,Globals.velocidadPuerto);
+                serialPort1.Parity = Parity.None;
+                Console.WriteLine(s);
+                try
+                {
+                    serialPort1.Open();
+                }
+                catch (IOException c)
+                {
+                    return;
+                }
+                catch (InvalidOperationException c1)
+                {                    
+                    return;
+                }
+                catch (ArgumentNullException c2)
+                {
+                    // System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c2);                    
+                    return;
+                }
+                catch (TimeoutException c3)
+                {
+                    //  System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c3);                    
+                    return;
+                }
+                catch (UnauthorizedAccessException c4)
+                {
+                    //System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c);
+                    return;
+                }
+                catch (ArgumentOutOfRangeException c5)
+                {
+                    //System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c5);
+                    return;
+                }
+                catch (ArgumentException c2)
+                {
+                    //System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c2);
+                    return;
+                }
+                if (!portfound)
+                {
+                    if (serialPort1.IsOpen) // Port has been opened properly...
+                    {
+                        serialPort1.ReadTimeout = 1000; // 500 millisecond timeout...
+                        serialPort1.WriteTimeout = 1000;
+                        serialPort1.RtsEnable = true;
+                        try
+                        {
+                            string comms = serialPort1.ReadLine();
+                            if (comms.Substring(0, 1) == "A") // We have found the arduino!
+                            {
+                                
+                                //serialPort1.ReadTimeout = 300;
+                                serialPort1.WriteLine("a");
+                                Console.WriteLine("Hubo respuesta");
+
+                            }
+                            else
+                            {
+                                serialPort1.Close();
+                            }
+                        }
+                        catch (Exception e1)
+                        {
+                            serialPort1.Close();
+                        }
+                    }
+                }
+            }
+        }
+        private void pruebaPuerto()
+        {
+            serialPort1 = new SerialPort("COM8", 9600);
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
+            //serialPort1.Handshake = Handshake.RequestToSend;
+            serialPort1.ReadTimeout = 1000;
+            serialPort1.RtsEnable = true;
+            serialPort1.Open();
+            while (true)
+            {
+                string a = serialPort1.ReadLine();
+                if (a.Substring(0, 1) == "A")
+                {
+                    serialPort1.WriteLine("a");
+                }
+                Console.WriteLine(a);
+                //Thread.Sleep(200);
+            }
         }
         // 
         // dialog boxes
