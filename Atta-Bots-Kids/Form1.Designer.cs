@@ -54,6 +54,7 @@
             this.Izquierda = new System.Windows.Forms.Button();
             this.Atras = new System.Windows.Forms.Button();
             this.Avanzar = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Herramientas.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Historial.SuspendLayout();
@@ -110,6 +111,7 @@
             this.generarDocumentoToolStripMenuItem.Name = "generarDocumentoToolStripMenuItem";
             this.generarDocumentoToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.generarDocumentoToolStripMenuItem.Text = "Generar Documento";
+            this.generarDocumentoToolStripMenuItem.Click += new System.EventHandler(this.generarDocumentoToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -381,6 +383,7 @@
         private System.Windows.Forms.Button Derecha;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Limpiar;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

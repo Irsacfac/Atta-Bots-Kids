@@ -299,6 +299,44 @@ namespace Atta_Bots_Kids
                 }
             }
         }
+
+        private void generarDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if(File.Exists(saveFileDialog1.FileName))
+                {
+                    path = saveFileDialog1.FileName;
+                    StreamWriter textoAGuardar = File.CreateText(path);
+                    if(instrucciones.Count > 0)
+                    {
+                        textoAGuardar.WriteLine(instrucciones[0].ToString());
+                        for(int i = 1; i < instrucciones.Count; i++)
+                        {
+                            textoAGuardar.WriteLine(instrucciones[i].ToString());
+                        }
+                        textoAGuardar.Flush();
+                        textoAGuardar.Close();
+                    }
+                }
+                else
+                {
+                    path = saveFileDialog1.FileName;
+                    StreamWriter textoAGuardar = File.CreateText(path);
+                    if (instrucciones.Count > 0)
+                    {
+                        textoAGuardar.WriteLine(instrucciones[0].ToString());
+                        for (int i = 1; i < instrucciones.Count; i++)
+                        {
+                            textoAGuardar.WriteLine(instrucciones[i].ToString());
+                        }
+                        textoAGuardar.Flush();
+                        textoAGuardar.Close();
+                    }
+                }
+            }
+        }
         // 
         // funciones auxiliares
         //
