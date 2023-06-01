@@ -279,13 +279,11 @@ namespace Atta_Bots_Kids
             }
             catch (Exception exc1)
             {
-                // System.ComponentModel.Win32Exception is a known exception that occurs when Firefox is default browser.            // It actually opens the browser but STILL throws this exception so we can just ignore it.  If not this exception,
-                // then attempt to open the URL in IE instead.
+                // System.ComponentModel.Win32Exception es una excepción que ocurrecuando se tiene a Firefox como navegador por defecto.
+                // si esa no es la exepción se abre la URL en IE en su lugar.
                 if (exc1.GetType().ToString() != "System.ComponentModel.Win32Exception")
                 {
-                    // sometimes throws exception so we have to just ignore
-                    // this is a common .NET bug that no one online really has a great reason for so now we just need to try to open
-                    // the URL using IE if we can.
+                    // se tiene en caso de que se arroje alguna excepción
                     try
                     {
                         System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo("IExplore.exe", Globals.urlManualUsuario);
@@ -402,14 +400,6 @@ namespace Atta_Bots_Kids
                 }
             }*/
         }
-        //Se configura el puerto serial
-        private void configSerialPort()
-        {
-            int velocidad = 5;
-            serialPort1 = new SerialPort("nombrepuerto", velocidad); //Asignacion de valores a los combo box de puerto y velocidad
-            //serialPort1.Open();
-            //serialPort1.WriteLine("0");
-        }
         // llama un dialog box que indica que se alcanzó el limite de instrucciones
         private static DialogResult InputBoxLimiteAlcanzado()
         {
@@ -441,46 +431,41 @@ namespace Atta_Bots_Kids
                     return;
                 }
                 catch (ArgumentNullException c2)
-                {
-                    // System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c2);                    
+                {                   
                     return;
                 }
                 catch (TimeoutException c3)
-                {
-                    //  System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c3);                    
+                {                    
                     return;
                 }
                 catch (UnauthorizedAccessException c4)
                 {
-                    //System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c);
                     return;
                 }
                 catch (ArgumentOutOfRangeException c5)
                 {
-                    //System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c5);
                     return;
                 }
                 catch (ArgumentException c2)
                 {
-                    //System.Windows.Forms.MessageBox.Show("Sorry, Exception Occured - " + c2);
                     return;
                 }
                 if (!portfound)
                 {
-                    if (serialPort1.IsOpen) // Port has been opened properly...
+                    if (serialPort1.IsOpen) // el puerto se habrió correctamente
                     {
-                        serialPort1.ReadTimeout = 1000; // 500 millisecond timeout...
+                        serialPort1.ReadTimeout = 1000; // 1 segundo de espera
                         serialPort1.WriteTimeout = 1000;
                         serialPort1.RtsEnable = true;
                         try
                         {
                             string comms = serialPort1.ReadLine();
-                            if (comms.Substring(0, 1) == "A") // We have found the arduino!
+                            if (comms.Substring(0, 1) == "A") // Se encontró un dispositivo compatible
                             {
-                                
-                                //serialPort1.ReadTimeout = 300;
-                                serialPort1.WriteLine("a");
+                                serialPort1.WriteLine("a"); // le indicamos al dispositivo que lo encontramos
                                 Console.WriteLine("Hubo respuesta");
+                                portfound = !portfound;
+                                break;
 
                             }
                             else
