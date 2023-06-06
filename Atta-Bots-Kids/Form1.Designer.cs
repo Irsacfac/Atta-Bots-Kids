@@ -74,7 +74,7 @@
             this.Herramientas.Dock = System.Windows.Forms.DockStyle.Top;
             this.Herramientas.Location = new System.Drawing.Point(0, 0);
             this.Herramientas.Name = "Herramientas";
-            this.Herramientas.Size = new System.Drawing.Size(800, 30);
+            this.Herramientas.Size = new System.Drawing.Size(800, 28);
             this.Herramientas.TabIndex = 0;
             // 
             // menuStrip1
@@ -86,7 +86,7 @@
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,7 +96,7 @@
             this.limpiarHistorialToolStripMenuItem,
             this.generarDocumentoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // limpiarHistorialToolStripMenuItem
@@ -119,7 +119,7 @@
             this.versionToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 26);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // versionToolStripMenuItem
@@ -141,9 +141,9 @@
             this.Historial.Controls.Add(this.DisplayHistorial);
             this.Historial.Controls.Add(this.label1);
             this.Historial.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Historial.Location = new System.Drawing.Point(383, 30);
+            this.Historial.Location = new System.Drawing.Point(383, 28);
             this.Historial.Name = "Historial";
-            this.Historial.Size = new System.Drawing.Size(417, 663);
+            this.Historial.Size = new System.Drawing.Size(417, 665);
             this.Historial.TabIndex = 1;
             // 
             // DisplayHistorial
@@ -194,9 +194,9 @@
             this.Botones.Controls.Add(this.Atras);
             this.Botones.Controls.Add(this.Avanzar);
             this.Botones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Botones.Location = new System.Drawing.Point(0, 30);
+            this.Botones.Location = new System.Drawing.Point(0, 28);
             this.Botones.Name = "Botones";
-            this.Botones.Size = new System.Drawing.Size(383, 663);
+            this.Botones.Size = new System.Drawing.Size(383, 665);
             this.Botones.TabIndex = 2;
             // 
             // label2
@@ -343,6 +343,7 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atta-Bots Kids";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Herramientas.ResumeLayout(false);
             this.Herramientas.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

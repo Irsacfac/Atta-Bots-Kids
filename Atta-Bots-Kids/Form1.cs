@@ -358,6 +358,7 @@ namespace Atta_Bots_Kids
         private void generarDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string path;
+            saveFileDialog1.Filter = "Documentos de texto|*.txt";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if(File.Exists(saveFileDialog1.FileName))
@@ -370,6 +371,14 @@ namespace Atta_Bots_Kids
                         for(int i = 1; i < instrucciones.Count; i++)
                         {
                             textoAGuardar.WriteLine(instrucciones[i].ToString());
+                        }
+                        if (detectarObstaculo)
+                        {
+                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-1,");
+                        }
+                        else
+                        {
+                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-0,");
                         }
                         textoAGuardar.Flush();
                         textoAGuardar.Close();
@@ -386,10 +395,25 @@ namespace Atta_Bots_Kids
                         {
                             textoAGuardar.WriteLine(instrucciones[i].ToString());
                         }
+                        if (detectarObstaculo)
+                        {
+                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-1,");
+                        }
+                        else
+                        {
+                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-0,");
+                        }
                         textoAGuardar.Flush();
                         textoAGuardar.Close();
                     }
                 }
+            }
+        }
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(InputBoxConfirmacion("Confirmar", "¿Seguro de cerrar la aplicación?") != DialogResult.OK)
+            {
+                e.Cancel = true;
             }
         }
         // 
@@ -681,5 +705,6 @@ namespace Atta_Bots_Kids
 
             return dialogResult;
         }
+
     }
 }
