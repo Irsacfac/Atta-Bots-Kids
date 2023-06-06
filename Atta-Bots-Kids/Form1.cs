@@ -37,6 +37,11 @@ namespace Atta_Bots_Kids
         // 
         // acciones al hacer click
         //
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, agrega una instrucción de retroceder la cantidad de milimetros escogida por el usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Avanzar_Click(object sender, EventArgs e)
         {
             // se revisa si se alcanzó el limite de instrcciones
@@ -64,7 +69,11 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, agrega una instrucción de retroceder la cantidad de milimetros escogida por el usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Atras_Click(object sender, EventArgs e)
         {
             // se revisa si se alcanzó el limite de instrcciones
@@ -92,7 +101,11 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, agrega una instrucción de giro a la izquierda con la cantidad de grados seleccionada por el usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Izquierda_Click(object sender, EventArgs e)
         {
             // se revisa si se alcanzó el limite de instrcciones
@@ -118,7 +131,11 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, agrega una instrucción de giro a la derecha con la cantidad de grados seleccionada por el usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Derecha_Click(object sender, EventArgs e)
         {
             // se revisa si se alcanzó el limite de instrcciones
@@ -144,7 +161,11 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, se agrega la instrucción de ciclo y se modifica la posición de las instrucciones posteriores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Ciclo_Click(object sender, EventArgs e)
         {
             // preguntar si se desea activar/desactivar el ciclo
@@ -174,7 +195,11 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Le indica al programa si se debe o no agregar la instrucción de detectar obstaculos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Obstaculo_Click(object sender, EventArgs e)
         {
             // preguntar si se desea activar/desactivar la detección de objetos
@@ -197,7 +222,12 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, intenta buscar un Atta-Bot al cual cargar las instrucciones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <remarks>Las instrucciones que se cargan al robót, si es que se logra encontrar, son las que se encuentran en el historial</remarks>
         private void Play_Click(object sender, EventArgs e)
         {
             if (InputBoxConfirmacion("Confirmar", "¿Desea cargar el código?") == DialogResult.OK)
@@ -229,7 +259,11 @@ namespace Atta_Bots_Kids
                 serialPort1.Close();
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, intenta indicarle al robot que se detenga
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Stop_Click(object sender, EventArgs e)
         {
             if (InputBoxConfirmacion("Confirmar", "¿Desea detener el robot?") == DialogResult.OK)
@@ -249,7 +283,11 @@ namespace Atta_Bots_Kids
                 serialPort1.Close();
             }
         }
-
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, llama a la función auxiliar "limpiarHistorial"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Limpiar_Click(object sender, EventArgs e)
         {
             if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
@@ -257,6 +295,11 @@ namespace Atta_Bots_Kids
                 limpiarHistorial();
             }
         }   
+        /// <summary>
+        /// Si se acepta el dialog box que se genera, llama a la función auxiliar "limpiarHistorial"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void limpiarHistorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (InputBoxConfirmacion("Confirmar", "¿Desea borrar el historial?") == DialogResult.OK)
@@ -264,6 +307,11 @@ namespace Atta_Bots_Kids
                 limpiarHistorial();
             }
         }
+        /// <summary>
+        /// Llama un dialog box donde se muestra la versión alcual de la aplicación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (InputBoxInformación("Versión", "Atta-Bots Kids versión: " + Globals.version) == DialogResult.OK)
@@ -271,6 +319,11 @@ namespace Atta_Bots_Kids
                 
             }
         }
+        /// <summary>
+        /// Redirige al usuario al manual de usuario, el cual se encuentra en una paina web
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -297,7 +350,11 @@ namespace Atta_Bots_Kids
                 }
             }
         }
-
+        /// <summary>
+        /// Genera un documento de texto cuendo se interactua con el botón "Generar documento"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void generarDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string path;
@@ -338,6 +395,10 @@ namespace Atta_Bots_Kids
         // 
         // funciones auxiliares
         //
+        /// <summary>
+        /// Elimina todos los elemtnos precentes en el historial
+        /// </summary>
+        /// <remarks>Devuelve a la aplicación a un estado similar al estado base</remarks>
         private void limpiarHistorial()
         {
             Console.WriteLine("OK");
@@ -356,7 +417,10 @@ namespace Atta_Bots_Kids
             Globals.PosicionInstrucciones = 5; // nuevo ejeX de las instrucciones en el historial
         }
 
-        //se llama cuando se desactiva el ciclo
+        /// <summary>
+        /// Ajusta a la posición correspondiente todas las instrucciones que se agregaron tras haber activado el ciclo
+        /// </summary>
+        /// <remarks>Se llama cuando el ciclo es desactivado</remarks>
         private void ajustarInstrucciones()
         {
             // si el ciclo era la ultima instruccion solo se borra
@@ -400,12 +464,17 @@ namespace Atta_Bots_Kids
                 }
             }*/
         }
-        // llama un dialog box que indica que se alcanzó el limite de instrucciones
+        /// <summary>
+        /// llama un dialog box que indica que se alcanzó el limite de instrucciones
+        /// </summary>
+        /// <returns>Retorna el dialog box a ser mostrado</returns>
         private static DialogResult InputBoxLimiteAlcanzado()
         {
             return InputBoxInformación("Alerta", "Limite de instrucciones alcanzado");
         }
-        //buscar el puerto serial donde se encuentra el Arduino
+        /// <summary>
+        /// buscar el puerto serial donde se encuentra el Arduino
+        /// </summary>
         private void autodetectarPuertoCOM()
         {
             //serialPort1.BaudRate = Globals.velocidadPuerto;
@@ -506,7 +575,12 @@ namespace Atta_Bots_Kids
         // 
         // dialog boxes
         //
-        // Dialog box de confirmación, aparece al momento de realizar alguna acción que requiera ser confirmada o rechazada
+        /// <summary>
+        /// Dialog box de confirmación, aparece al momento de realizar alguna acción que requiera ser confirmada o rechazada
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="promptText"></param>
+        /// <returns>Retorna el dialog box con una pregunta relacionada a lo que debe aceptar o cancelar</returns>
         public static DialogResult InputBoxConfirmacion(string title, string promptText)
         {
             // elementos del dialog box
@@ -559,7 +633,12 @@ namespace Atta_Bots_Kids
 
             return dialogResult;
         }
-        // Dialog box para indicar que el limite de instrucciones a sido alcanzada
+        /// <summary>
+        /// Dialog box para indicar al usuario algun tipo de información en concreto
+        /// </summary>
+        /// <param name="titulo"></param>
+        /// <param name="mensaje"></param>
+        /// <returns>Reorna el dialog box con la información pertinente</returns>
         public static DialogResult InputBoxInformación(string titulo, string mensaje)
         {
             // elementos del dialog box

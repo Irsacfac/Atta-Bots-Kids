@@ -70,5 +70,5 @@ public static class Globals
     public static string nombrePuerto = "COM6";
     public static int velocidadPuerto = 9600;
     public static string version = "1.0.0";
-    public static string urlManualUsuario = "https://docs.google.com/document/d/17HvavxANIRULvxEHveDGZe1o2VDpC7NrD-Ffh2iQmK8/edit";
+    public static string urlManualUsuario = "https://www.overleaf.com/read/xhgxwbjsvynb";
 }

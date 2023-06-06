@@ -17,7 +17,11 @@ namespace Atta_Bots_Kids
         private string codigo;
         private string valor;
         private List<Contenedor> instrucciones;
-
+        /// <summary>
+        /// Constructor de la clase Contenedor pensado para la instrucción "ciclo"
+        /// </summary>
+        /// <param name="funcion"></param>
+        /// <param name="valor"></param>
         public Contenedor(Funciones funcion, string valor)
         {
             this.valor = valor;
@@ -25,6 +29,13 @@ namespace Atta_Bots_Kids
             boton = null;
             imagenInstruccion = null;
         }
+        /// <summary>
+        /// Constructor de la clase Contenedor, utilizado para las instrucciones relacionadas con el movimiento del robot
+        /// </summary>
+        /// <param name="historial"></param>
+        /// <param name="instrucciones"></param>
+        /// <param name="funcion"></param>
+        /// <param name="valor"></param>
         public Contenedor(Panel historial, List<Contenedor> instrucciones, Funciones funcion, string valor)
         {
             this.instrucciones = instrucciones;
@@ -50,7 +61,9 @@ namespace Atta_Bots_Kids
                     break;
             }
         }
-
+        /// <summary>
+        /// Ubica los elementos graficos del Contenedor en el historial de la aplación
+        /// </summary>
         private void InitializeComponent()
         {
             int ejeX = PosicionInstrucciones;
@@ -84,7 +97,11 @@ namespace Atta_Bots_Kids
             boton.UseVisualStyleBackColor = false;
             boton.Click += new System.EventHandler(Boton_Click);
         }
-        //elimina la instruccion deseada, no se pregunta por confirmación
+        /// <summary>
+        /// elimina la instruccion deseada, no se pregunta por confirmación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Boton_Click(object sender, EventArgs e)
         {
             historial.Controls.Remove(boton); // quitar del panel
@@ -163,6 +180,9 @@ namespace Atta_Bots_Kids
             }
             eliminarInstruccion();
         }
+        /// <summary>
+        /// libera los elementos graficos del Contenedor
+        /// </summary>
         public void Clear()
         {
             if (boton != null)
@@ -171,24 +191,45 @@ namespace Atta_Bots_Kids
                 imagenInstruccion.Dispose();
             }
         }
+        /// <summary>
+        /// Se modifica la posición altual de los componentes del Contenedor
+        /// </summary>
+        /// <param name="ejeX"></param>
+        /// <param name="ejeY"></param>
         public void actualizarPosicion(int ejeX, int ejeY)
         {
             imagenInstruccion.Location = new System.Drawing.Point(ejeX, ejeY + historial.AutoScrollPosition.Y);
             boton.Location = new System.Drawing.Point(ejeX + tamanioInstrucciones, ejeY + historial.AutoScrollPosition.Y);
         }
+        /// <summary>
+        /// Se modifica unicamente el eje X de los componentes del Contenedor
+        /// </summary>
+        /// <param name="ajuste"></param>
         public void ajustarEjeX(int ajuste)
         {
             imagenInstruccion.Left += ajuste;
             boton.Left += ajuste;
         }
+        /// <summary>
+        /// Convierte el contenido del contenedor en un string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return codigo + "-" + valor;
         }
+        /// <summary>
+        /// Para conseguir el eje X de los componentes del Contenedor
+        /// </summary>
+        /// <returns>Retorna la posición del eje X del PictureBox</returns>
         public int GetEjeX()
         {
             return imagenInstruccion.Left;
         }
+        /// <summary>
+        /// Se pregunta si la instrucción actual es la de ciclo
+        /// </summary>
+        /// <returns>Retorna true si es el ciclo y false si es cualquier otra instrucción.</returns>
         private bool isCiclo()
         {
             return boton == null;
