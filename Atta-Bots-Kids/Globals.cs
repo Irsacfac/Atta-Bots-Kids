@@ -70,5 +70,5 @@ public static class Globals
     public static string nombrePuerto = "COM6";
     public static int velocidadPuerto = 9600;
     public static string version = "1.0.0";
-    public static string urlManualUsuario = "https://www.overleaf.com/read/xhgxwbjsvynb";
+    public static string urlManualUsuario = "https://github.com/jcbrenes/PROE/blob/Atta-Bots-Kids/Atta-Bots-Kids/Practica_Profesional___Manual_de_usuario.pdf";
 }
