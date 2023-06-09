@@ -374,11 +374,11 @@ namespace Atta_Bots_Kids
                         }
                         if (detectarObstaculo)
                         {
-                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-1,");
+                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-1");
                         }
                         else
                         {
-                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-0,");
+                            textoAGuardar.WriteLine(Globals.codigos[(int)Globals.Funciones.Obstaculo] + "-0");
                         }
                         textoAGuardar.Flush();
                         textoAGuardar.Close();
